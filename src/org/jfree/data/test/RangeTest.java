@@ -157,4 +157,101 @@ public class RangeTest {
 		assertEquals(true, rangeObject.equals(rangeObjectTwo));
 	}
 	
+	/*
+	 * INTERSECTS()
+	 */
+	
+	@Test
+	public void IntersectsNominalTrueTest(){
+		assertEquals(true, rangeObject.intersects(-100, 100));
+	}
+	
+	@Test
+	public void IntersectsBottomTest(){
+		assertEquals(true, rangeObject.intersects(-100, 0));
+	}
+	
+	@Test
+	public void IntersectsTopTest(){
+		assertEquals(true, rangeObject.intersects(0, 99));
+	}
+	
+	@Test
+	public void IntersectsMinimumRangeTest(){
+		rangeObject = new Range(0,0);	
+		assertEquals(true, rangeObject.intersects(0, 0));
+	}
+	
+	@Test
+	public void IntersectsMaximumRangeTest(){
+		double maxValDouble = Double.MAX_VALUE;
+		double minValDouble = Double.MIN_VALUE;
+		
+		Range rangeObject = new Range(minValDouble, maxValDouble);
+		assertEquals(true, rangeObject.intersects(Double.MIN_VALUE, Double.MAX_VALUE));
+	}
+	
+	/*
+	 * SHIFT()
+	 */
+	
+	@Test
+	public void ShiftNominalTest(){
+		double shiftValue = 5;
+		Range rangeObjectTwo = new Range(-95, 105);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectShifted));
+	}
+	
+	@Test
+	public void ShiftMinimumShiftTest(){
+		double shiftValue = 0;
+		rangeObject = new Range(0,0);
+		Range rangeObjectTwo = new Range(0, 0);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectShifted));
+	}
+	
+	
+	@Test
+	public void ShiftMaximumShiftTest(){
+		double maxValDouble = Double.MAX_VALUE;
+		double shiftValue = maxValDouble;
+		
+		rangeObject = new Range(0,0);
+		Range rangeObjectTwo = new Range(maxValDouble, maxValDouble);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectShifted));
+	}
+	
+	@Test
+	public void ShiftNearMaximumShiftTest(){
+		double maxValDouble = Double.MAX_VALUE;
+		double shiftValue = maxValDouble -1;
+		
+		rangeObject = new Range(0,0);
+		Range rangeObjectTwo = new Range(maxValDouble-1, maxValDouble-1);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectShifted));
+	}
+	
+	@Test
+	public void ShiftNegativeShiftTest(){
+		double shiftValue = -1;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-101, 99);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectShifted));
+	}
 }
