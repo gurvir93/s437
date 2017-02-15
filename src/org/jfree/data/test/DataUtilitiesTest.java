@@ -24,30 +24,27 @@ public class DataUtilitiesTest {
 		values = mockingContext.mock(Values2D.class);
 		mockingContext.checking(new Expectations() {
 			{
-				one(values).getRowCount();   
+				one(values).getRowCount(); 
 				will(returnValue(8));      
 
-				one(values).getValue(0, 0);     
-				will(returnValue(7.5));     
-				one(values).getValue(1, 0);  
-				will(returnValue(2.5));
-				one(values).getValue(2, 0);     
-				will(returnValue(0));     
-				one(values).getValue(3, 0);  
-				will(returnValue(0)); 
-				one(values).getValue(4, 0);     
-				will(returnValue(0));     
-				one(values).getValue(5, 0);  
-				will(returnValue(0)); 
-				one(values).getValue(6, 0);     
-				will(returnValue(0));     
-				one(values).getValue(7, 0);  
-				will(returnValue(0)); 
+				one(values).getColumnCount(); 
+				will(returnValue(8));     
 				
-				/*******************/
-				/* *** COLUMNS *** */
-				/*******************/
+				/**********************************/
+				/* *** UNUSED ROWS & COLUMNS *** */
+				/*********************************/
 				
+				//These values should remain as Zero
+				one(values).getValue(0, 1);     
+				will(returnValue(0));     
+				one(values).getValue(1, 1);  
+				will(returnValue(0));
+				
+				
+				/***********************************************/
+				/* *** COLUMNS FOR COLUMN TESTING (GURVIR) *** */
+				/***********************************************/
+
 				// Zero Test (Columns)
 				one(values).getValue(0, 2);
 				will(returnValue(0));
@@ -135,6 +132,43 @@ public class DataUtilitiesTest {
 				will(returnValue(0));     
 				one(values).getValue(7, 6);  
 				will(returnValue(0)); 
+				
+				
+				
+				/*****************************************/
+				/* *** ROWS FOR ROW TESTING (ANGELA) *** */
+				/*****************************************/
+				
+				one(values).getValue(2, 0); 
+				will(returnValue(4.2));     
+				one(values).getValue(2, 1); 
+				will(returnValue(7.8));    
+				
+				one(values).getValue(3, 0);
+				will(returnValue(0));
+				one(values).getValue(3, 1);
+				will(returnValue(0));
+				
+				one(values).getValue(4, 0);     
+				will(returnValue(maxValDouble)); 
+				one(values).getValue(4, 1);     
+				will(returnValue(0)); 
+				
+				one(values).getValue(5, 0);     
+				will(returnValue(maxValDouble/2)); 
+				one(values).getValue(5, 1);     
+				will(returnValue(maxValDouble/2)); 
+				
+				one(values).getValue(6, 0);     
+				will(returnValue(minValDouble)); 
+				one(values).getValue(6, 1);     
+				will(returnValue(0)); 
+				
+				one(values).getValue(7, 0);     
+				will(returnValue(minValDouble/2)); 
+				one(values).getValue(7, 1);     
+				will(returnValue(minValDouble/2)); 
+				
 			}
 		});
 	}
@@ -195,4 +229,61 @@ public class DataUtilitiesTest {
 		double result = DataUtilities.calculateColumnTotal(values, 4);
 		assertEquals(result, minValDouble, .000000001d);
 	}
+	
+	
+	
+	/*
+	 * CALCULATEROWTOTAL()
+	 * calculateRowTotal(Values2D data, int row) - Angela
+	 */
+	
+	@Test
+	public void calculateRowTotalNominalTest() {
+		double result = DataUtilities.calculateRowTotal(values, 2);
+		assertEquals(12.0, result, .000000001d);
+	}
+	
+	
+	@Test
+	public void calculateRowTotalFalseNominalTest() {
+		try {
+			DataUtilities.calculateRowTotal(values, 0 /*Placeholder - What do I put here?*/);
+			fail();
+		}
+		catch(Error e){
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	public void calculateRowTotalZeroTest() {
+		double result = DataUtilities.calculateRowTotal(values, 3);
+		assertEquals(0, result, .000000001d);
+	}
+	
+	
+	@Test
+	public void calculateRowTotalMaximumTest1() {		
+		double result = DataUtilities.calculateRowTotal(values, 4);
+		assertEquals(maxValDouble, result, .000000001d);
+	}
+	
+	@Test
+	public void calculateRowTotalMaximumTest2() {
+		double result = DataUtilities.calculateRowTotal(values, 5);
+		assertEquals(maxValDouble, result, .000000001d);
+	}
+	
+	@Test
+	public void calculateRowTotalMinimumTest1() {		
+		double result = DataUtilities.calculateRowTotal(values, 6);
+		assertEquals(minValDouble, result, .000000001d);
+	}
+	
+	@Test
+	public void calculateRowTotalMinimumTest2() {		
+		double result = DataUtilities.calculateRowTotal(values, 7);
+		assertEquals(minValDouble, result, .000000001d);
+	}
+	
 }
