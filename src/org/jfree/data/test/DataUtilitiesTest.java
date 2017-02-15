@@ -133,6 +133,23 @@ public class DataUtilitiesTest {
 				one(values).getValue(7, 6);  
 				will(returnValue(0)); 
 				
+				one(values).getValue(0, 7);
+				will(returnValue(-1));
+				one(values).getValue(1, 7);
+				will(returnValue(1));
+				one(values).getValue(2, 7);     
+				will(returnValue(2.5));     
+				one(values).getValue(3, 7);  
+				will(returnValue(7.0)); 
+				one(values).getValue(4, 7);     
+				will(returnValue(0));     
+				one(values).getValue(5, 7);  
+				will(returnValue(0.5)); 
+				one(values).getValue(6, 7);     
+				will(returnValue(0));     
+				one(values).getValue(7, 7);  
+				will(returnValue(0)); 
+				
 				
 				
 				/*****************************************/
@@ -185,7 +202,7 @@ public class DataUtilitiesTest {
 	
 	@Test
 	public void calculateColumnTotalNominalTest() {
-		double result = DataUtilities.calculateColumnTotal(values, 0);
+		double result = DataUtilities.calculateColumnTotal(values, 7);
 		assertEquals(result, 10.0, .000000001d);
 	}
 	
@@ -202,31 +219,31 @@ public class DataUtilitiesTest {
 	
 	@Test
 	public void calculateColumnTotalZeroTest() {
-		double result = DataUtilities.calculateColumnTotal(values, 5);
+		double result = DataUtilities.calculateColumnTotal(values, 2);
 		assertEquals(result, 0, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMaximumTest1() {		
-		double result = DataUtilities.calculateColumnTotal(values, 1);
+		double result = DataUtilities.calculateColumnTotal(values, 3);
 		assertEquals(result, maxValDouble, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMaximumTest2() {
-		double result = DataUtilities.calculateColumnTotal(values, 2);
+		double result = DataUtilities.calculateColumnTotal(values, 4);
 		assertEquals(result, maxValDouble, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMinimumTest1() {		
-		double result = DataUtilities.calculateColumnTotal(values, 3);
+		double result = DataUtilities.calculateColumnTotal(values, 5);
 		assertEquals(result, minValDouble, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMinimumTest2() {
-		double result = DataUtilities.calculateColumnTotal(values, 4);
+		double result = DataUtilities.calculateColumnTotal(values, 6);
 		assertEquals(result, minValDouble, .000000001d);
 	}
 	
@@ -286,4 +303,63 @@ public class DataUtilitiesTest {
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
+	/*
+	 * CREATENUMBERARRAY()
+	 */
+	
+	@Test
+	public void createNumberArrayNominalTest() {
+		double[] doubleArray = {0, 1, 2, 3, 4};
+		Number[] numArray = DataUtilities.createNumberArray(doubleArray);
+		
+		assertEquals(doubleArray.length, numArray.length);
+		assertEquals(doubleArray[0], numArray[0]);
+		assertEquals(doubleArray[1], numArray[1]);
+		assertEquals(doubleArray[2], numArray[2]);
+		assertEquals(doubleArray[3], numArray[3]);
+		assertEquals(doubleArray[4], numArray[4]);
+	}
+	
+	@Test
+	public void createNumberArrayFalseNominalTest() {
+		double[] doubleArray = {0, 1, 2, 3, 4};
+		Number[] numArray = DataUtilities.createNumberArray(doubleArray);
+		
+		Number[] numFalseArray = {4, 3, 2, 1, 0};
+		
+		assertEquals(false, numFalseArray == numArray);
+		
+	}
+	
+	@Test
+	public void createNumberArrayZeroTest() {
+		double[] doubleArray = {0.0, 0.0, 0.0, 0.0, 0.0};
+		Number[] numArray = DataUtilities.createNumberArray(doubleArray);
+		
+		for (int i = 0; i < doubleArray.length; i++)
+			assertEquals((double)0.0, numArray[i]);
+	}
+	
+	@Test
+	public void createNumberArrayMaximumTest() {
+		double[] doubleArray = {0.0, maxValDouble/2, maxValDouble, maxValDouble};
+		Number[] numArray = DataUtilities.createNumberArray(doubleArray);
+		
+		assertEquals(doubleArray[0], numArray[0]);
+		assertEquals(doubleArray[1], numArray[1]);
+		assertEquals(doubleArray[2], numArray[2]);
+		assertEquals(doubleArray[3], numArray[3]);
+	}
+	
+	@Test
+	public void createNumberArrayMinimumTest() {
+		double[] doubleArray = {0.0, -1.0, minValDouble/2, minValDouble, minValDouble};
+		Number[] numArray = DataUtilities.createNumberArray(doubleArray);
+		
+		assertEquals(doubleArray[0], numArray[0]);
+		assertEquals(doubleArray[1], numArray[1]);
+		assertEquals(doubleArray[2], numArray[2]);
+		assertEquals(doubleArray[3], numArray[3]);
+		assertEquals(doubleArray[4], numArray[4]);
+	}
 }
