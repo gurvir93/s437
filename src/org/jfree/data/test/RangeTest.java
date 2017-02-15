@@ -188,7 +188,7 @@ public class RangeTest {
 		double minValDouble = Double.MIN_VALUE;
 		
 		Range rangeObject = new Range(minValDouble, maxValDouble);
-		assertEquals(true, rangeObject.intersects(Double.MIN_VALUE, Double.MAX_VALUE));
+		assertEquals(true, rangeObject.intersects(minValDouble, maxValDouble));
 	}
 	
 	/*
