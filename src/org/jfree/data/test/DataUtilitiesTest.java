@@ -25,26 +25,6 @@ public class DataUtilitiesTest {
 	public void setUp() throws Exception {
 		mockContextKeyedValues = new Mockery();
 		keyValues = mockContextKeyedValues.mock(KeyedValues.class);
-		mockContextKeyedValues.checking(new Expectations() {
-			{
-				allowing(keyValues).getItemCount();
-				will(returnValue(3));
-				
-				allowing(keyValues).getKey(0);
-				will(returnValue(0));
-				allowing(keyValues).getKey(1);
-				will(returnValue(1));
-				allowing(keyValues).getKey(2);
-				will(returnValue(2));
-				
-				allowing(keyValues).getValue(0);
-				will(returnValue(1));
-				allowing(keyValues).getValue(1);
-				will(returnValue(10));
-				allowing(keyValues).getValue(2);
-				will(returnValue(20));
-			}			
-		});
 		
 		mockContextValues2D = new Mockery();
 		values = mockContextValues2D.mock(Values2D.class);
@@ -466,9 +446,104 @@ public class DataUtilitiesTest {
 	 */
 	@Test
 	public void getCumulativePercentagesNominalTest() {
+		mockContextKeyedValues.checking(new Expectations() {
+			{
+				allowing(keyValues).getItemCount();
+				will(returnValue(3));
+				
+				allowing(keyValues).getKey(0);
+				will(returnValue(0));
+				allowing(keyValues).getKey(1);
+				will(returnValue(1));
+				allowing(keyValues).getKey(2);
+				will(returnValue(2));
+				
+				allowing(keyValues).getValue(0);
+				will(returnValue(1));
+				allowing(keyValues).getValue(1);
+				will(returnValue(10));
+				allowing(keyValues).getValue(2);
+				will(returnValue(20));
+			}			
+		});
+		
 		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
 		double cumTotal = 0;
 		
+		for(int i=0; i < keyValues.getItemCount(); i++)
+			cumTotal += keyValues.getValue(i).doubleValue();
+		
+		double currentTotal = 0;
+		for (int i=0; i < keyValues.getItemCount(); i++) {
+			currentTotal += keyValues.getValue(i).doubleValue(); 
+			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(),.000000001d);
+		}
+	}
+	
+	@Test
+	public void getCumulativePercentagesMinimumTest() {
+		mockContextKeyedValues.checking(new Expectations() {
+			{				
+				allowing(keyValues).getItemCount();
+				will(returnValue(3));
+				
+				allowing(keyValues).getKey(0);
+				will(returnValue(0));
+				allowing(keyValues).getKey(1);
+				will(returnValue(1));
+				allowing(keyValues).getKey(2);
+				will(returnValue(2));
+				
+				allowing(keyValues).getValue(0);
+				will(returnValue(0));
+				allowing(keyValues).getValue(1);
+				will(returnValue(minValDouble/2));
+				allowing(keyValues).getValue(2);
+				will(returnValue(minValDouble));
+			}			
+		});
+		
+		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
+		double cumTotal = 0;
+		
+		System.out.println(keyValues.getValue(1));
+		for(int i=0; i < keyValues.getItemCount(); i++)
+			cumTotal += keyValues.getValue(i).doubleValue();
+		
+		double currentTotal = 0;
+		for (int i=0; i < keyValues.getItemCount(); i++) {
+			currentTotal += keyValues.getValue(i).doubleValue(); 
+			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(),.000000001d);
+		}
+	}
+	
+	@Test
+	public void getCumulativePercentagesMaximumTest() {
+		mockContextKeyedValues.checking(new Expectations() {
+			{				
+				allowing(keyValues).getItemCount();
+				will(returnValue(3));
+				
+				allowing(keyValues).getKey(0);
+				will(returnValue(0));
+				allowing(keyValues).getKey(1);
+				will(returnValue(1));
+				allowing(keyValues).getKey(2);
+				will(returnValue(2));
+				
+				allowing(keyValues).getValue(0);
+				will(returnValue(0));
+				allowing(keyValues).getValue(1);
+				will(returnValue(maxValDouble/2));
+				allowing(keyValues).getValue(2);
+				will(returnValue(maxValDouble));
+			}			
+		});
+		
+		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
+		double cumTotal = 0;
+		
+		System.out.println(keyValues.getValue(1));
 		for(int i=0; i < keyValues.getItemCount(); i++)
 			cumTotal += keyValues.getValue(i).doubleValue();
 		
