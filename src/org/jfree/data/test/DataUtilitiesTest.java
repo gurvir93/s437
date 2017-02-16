@@ -442,7 +442,10 @@ public class DataUtilitiesTest {
 	
 	
 	/*
-	 * GETCUMULATIVEPERCENTAGES
+	 * GETCUMULATIVEPERCENTAGES()
+	 * 
+	 * Note: These tests have expectations set in each test as the only way 
+	 * 		 to get around this is to create several mock objects.
 	 */
 	@Test
 	public void getCumulativePercentagesNominalTest() {
@@ -506,7 +509,6 @@ public class DataUtilitiesTest {
 		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
 		double cumTotal = 0;
 		
-		System.out.println(keyValues.getValue(1));
 		for(int i=0; i < keyValues.getItemCount(); i++)
 			cumTotal += keyValues.getValue(i).doubleValue();
 		
@@ -543,7 +545,6 @@ public class DataUtilitiesTest {
 		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
 		double cumTotal = 0;
 		
-		System.out.println(keyValues.getValue(1));
 		for(int i=0; i < keyValues.getItemCount(); i++)
 			cumTotal += keyValues.getValue(i).doubleValue();
 		
@@ -621,8 +622,8 @@ public class DataUtilitiesTest {
 		
 		double currentTotal = 0;
 		for (int i=0; i < keyValues.getItemCount(); i++) {
-			currentTotal += keyValues.getValue(i).doubleValue(); 
-			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(),.000000001d);
+			currentTotal += keyValues.getValue(i).doubleValue();
+			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(), .000000001d);
 		}
 	}
 	

@@ -98,7 +98,7 @@ public class RangeTest {
 	@Test
 	public void DoesNotContainMinimumTest(){
 		rangeObject = new Range(minValDouble, 0);
-		assertEquals(false, rangeObject.contains(-1));
+		assertEquals(false, rangeObject.contains(1));
 	}
 	
 	/*
