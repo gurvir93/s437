@@ -589,4 +589,41 @@ public class DataUtilitiesTest {
 			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(),.000000001d);
 		}
 	}
+	
+	@Test
+	public void getCumulativePercentagesEqualToZeroTest() {
+		mockContextKeyedValues.checking(new Expectations() {
+			{				
+				allowing(keyValues).getItemCount();
+				will(returnValue(3));
+				
+				allowing(keyValues).getKey(0);
+				will(returnValue(0));
+				allowing(keyValues).getKey(1);
+				will(returnValue(1));
+				allowing(keyValues).getKey(2);
+				will(returnValue(2));
+				
+				allowing(keyValues).getValue(0);
+				will(returnValue(-5));
+				allowing(keyValues).getValue(1);
+				will(returnValue(0));
+				allowing(keyValues).getValue(2);
+				will(returnValue(-5));
+			}			
+		});
+		
+		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
+		double cumTotal = 0;
+		
+		for(int i=0; i < keyValues.getItemCount(); i++)
+			cumTotal += keyValues.getValue(i).doubleValue();
+		
+		double currentTotal = 0;
+		for (int i=0; i < keyValues.getItemCount(); i++) {
+			currentTotal += keyValues.getValue(i).doubleValue(); 
+			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(),.000000001d);
+		}
+	}
+	
 }
