@@ -269,7 +269,7 @@ public class DataUtilitiesTest {
 	@Test
 	public void calculateRowTotalFalseNominalTest() {
 		try {
-			DataUtilities.calculateRowTotal(values, 0 /*Placeholder - What do I put here?*/);
+			DataUtilities.calculateRowTotal(values, 14);
 			fail();
 		}
 		catch(Error e){
