@@ -605,7 +605,7 @@ public class DataUtilitiesTest {
 				will(returnValue(2));
 				
 				allowing(keyValues).getValue(0);
-				will(returnValue(-5));
+				will(returnValue(5));
 				allowing(keyValues).getValue(1);
 				will(returnValue(0));
 				allowing(keyValues).getValue(2);
