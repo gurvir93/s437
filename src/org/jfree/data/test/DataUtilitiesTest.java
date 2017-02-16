@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.jfree.data.Values2D;
 import org.jfree.data.DataUtilities;
+import org.jfree.data.KeyedValues;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.After;
@@ -12,17 +13,42 @@ import org.junit.Test;
 
 public class DataUtilitiesTest {
 
-	private Mockery mockingContext;
+	private Mockery mockContextValues2D;
 	private Values2D values;
+	private Mockery mockContextKeyedValues;
+	private KeyedValues keyValues;
+	
 	private double maxValDouble = Double.MAX_VALUE;
 	private double minValDouble = Double.MIN_VALUE;
-
 	
 	@Before
 	public void setUp() throws Exception {
-		mockingContext = new Mockery();
-		values = mockingContext.mock(Values2D.class);
-		mockingContext.checking(new Expectations() {
+		mockContextKeyedValues = new Mockery();
+		keyValues = mockContextKeyedValues.mock(KeyedValues.class);
+		mockContextKeyedValues.checking(new Expectations() {
+			{
+				allowing(keyValues).getItemCount();
+				will(returnValue(3));
+				
+				allowing(keyValues).getKey(0);
+				will(returnValue(0));
+				allowing(keyValues).getKey(1);
+				will(returnValue(1));
+				allowing(keyValues).getKey(2);
+				will(returnValue(2));
+				
+				allowing(keyValues).getValue(0);
+				will(returnValue(1));
+				allowing(keyValues).getValue(1);
+				will(returnValue(10));
+				allowing(keyValues).getValue(2);
+				will(returnValue(20));
+			}			
+		});
+		
+		mockContextValues2D = new Mockery();
+		values = mockContextValues2D.mock(Values2D.class);
+		mockContextValues2D.checking(new Expectations() {
 			{
 				one(values).getRowCount(); 
 				will(returnValue(8));      
@@ -185,15 +211,14 @@ public class DataUtilitiesTest {
 				one(values).getValue(7, 0);     
 				will(returnValue(minValDouble/2)); 
 				one(values).getValue(7, 1);     
-				will(returnValue(minValDouble/2)); 
-				
+				will(returnValue(minValDouble/2));
 			}
 		});
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		mockingContext = null;
+		mockContextValues2D = null;
 		values = null;
 	}
 
@@ -432,6 +457,25 @@ public class DataUtilitiesTest {
 		for(int i=0; i < doubleArray.length; i++) {
 			for(int j=0; j < doubleArray[i].length; j++)
 				assertEquals(doubleArray[i][j], numArray[i][j]);
+		}
+	}
+	
+	
+	/*
+	 * GETCUMULATIVEPERCENTAGES
+	 */
+	@Test
+	public void getCumulativePercentagesNominalTest() {
+		KeyedValues cumVal = DataUtilities.getCumulativePercentages(keyValues);
+		double cumTotal = 0;
+		
+		for(int i=0; i < keyValues.getItemCount(); i++)
+			cumTotal += keyValues.getValue(i).doubleValue();
+		
+		double currentTotal = 0;
+		for (int i=0; i < keyValues.getItemCount(); i++) {
+			currentTotal += keyValues.getValue(i).doubleValue(); 
+			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(),.000000001d);
 		}
 	}
 }
