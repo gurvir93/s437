@@ -133,6 +133,7 @@ public class DataUtilitiesTest {
 				one(values).getValue(7, 6);  
 				will(returnValue(0)); 
 				
+				// Nominal Values Test (Column)
 				one(values).getValue(0, 7);
 				will(returnValue(-1));
 				one(values).getValue(1, 7);
@@ -203,7 +204,7 @@ public class DataUtilitiesTest {
 	@Test
 	public void calculateColumnTotalNominalTest() {
 		double result = DataUtilities.calculateColumnTotal(values, 7);
-		assertEquals(result, 10.0, .000000001d);
+		assertEquals(10.0, result, .000000001d);
 	}
 	
 	@Test
@@ -220,33 +221,32 @@ public class DataUtilitiesTest {
 	@Test
 	public void calculateColumnTotalZeroTest() {
 		double result = DataUtilities.calculateColumnTotal(values, 2);
-		assertEquals(result, 0, .000000001d);
+		assertEquals(0, result, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMaximumTest1() {		
 		double result = DataUtilities.calculateColumnTotal(values, 3);
-		assertEquals(result, maxValDouble, .000000001d);
+		assertEquals(maxValDouble, result, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMaximumTest2() {
 		double result = DataUtilities.calculateColumnTotal(values, 4);
-		assertEquals(result, maxValDouble, .000000001d);
+		assertEquals(maxValDouble, result, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMinimumTest1() {		
 		double result = DataUtilities.calculateColumnTotal(values, 5);
-		assertEquals(result, minValDouble, .000000001d);
+		assertEquals(minValDouble, result, .000000001d);
 	}
 	
 	@Test
 	public void calculateColumnTotalMinimumTest2() {
 		double result = DataUtilities.calculateColumnTotal(values, 6);
-		assertEquals(result, minValDouble, .000000001d);
+		assertEquals(minValDouble, result, .000000001d);
 	}
-	
 	
 	
 	/*
@@ -303,6 +303,7 @@ public class DataUtilitiesTest {
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
+	
 	/*
 	 * CREATENUMBERARRAY()
 	 */
@@ -324,8 +325,7 @@ public class DataUtilitiesTest {
 	public void createNumberArrayFalseNominalTest() {
 		double[] doubleArray = {0, 1, 2, 3, 4};
 		Number[] numArray = DataUtilities.createNumberArray(doubleArray);
-		
-		Number[] numFalseArray = {4, 3, 2, 1, 0};
+		Number[] numFalseArray = {4.0, 3.0, 2.0, 1.0, 0.0};
 		
 		assertEquals(false, numFalseArray == numArray);
 		
@@ -361,5 +361,77 @@ public class DataUtilitiesTest {
 		assertEquals(doubleArray[2], numArray[2]);
 		assertEquals(doubleArray[3], numArray[3]);
 		assertEquals(doubleArray[4], numArray[4]);
+	}
+	
+	
+	/*
+	 * CREATENUMBERARRAY2D()
+	 */
+	
+	@Test
+	public void createNumberArray2DNominalTest() {
+		double[][] doubleArray = 
+			{{0, 1, 2, 3, 4},
+			{4, 3, 2, 1, 0}};
+		Number[][] numArray = DataUtilities.createNumberArray2D(doubleArray);
+		
+		assertEquals(doubleArray.length, numArray.length);
+		
+		for(int i=0; i < doubleArray.length; i++) {
+			for(int j=0; j < doubleArray[i].length; j++)
+				assertEquals(doubleArray[i][j], numArray[i][j]);
+		}
+	}
+	
+	@Test
+	public void createNumberArray2DFalseNominalTest() {
+		double[][] doubleArray = 
+			{{0, 1, 2, 3, 4},
+			{4, 3, 2, 1, 0}};
+		Number[][] numArray = DataUtilities.createNumberArray2D(doubleArray);
+		Number[][] numFalseArray = 
+			{{4.0, 3.0, 2.0, 1.0, 0.0},
+			{0.0, 1.0, 2.0, 3.0, 4.0}};
+		
+		assertEquals(false, numFalseArray == numArray);
+	}
+	
+	@Test
+	public void createNumberArray2DZeroTest() {
+		double[][] doubleArray = 
+			{{0.0, 0.0, 0.0, 0.0, 0.0},
+			{0.0, 0.0, 0.0, 0.0, 0.0}};
+		Number[][] numArray = DataUtilities.createNumberArray2D(doubleArray);
+		
+		for(int i=0; i < doubleArray.length; i++) {
+			for(int j=0; j < doubleArray[i].length; j++)
+				assertEquals(0.0, numArray[i][j]);
+		}
+	}
+	
+	@Test
+	public void createNumberArray2DMaximumTest() {
+		double[][] doubleArray = 
+			{{0.0, maxValDouble/2, maxValDouble, maxValDouble},
+			{maxValDouble, maxValDouble, maxValDouble/2, 0.0}};
+		Number[][] numArray = DataUtilities.createNumberArray2D(doubleArray);
+		
+		for(int i=0; i < doubleArray.length; i++) {
+			for(int j=0; j < doubleArray[i].length; j++)
+				assertEquals(doubleArray[i][j], numArray[i][j]);
+		}
+	}
+	
+	@Test
+	public void createNumberArray2DMinimumTest() {
+		double[][] doubleArray = 
+			{{0.0, -1.0, minValDouble/2, minValDouble, minValDouble},
+			{minValDouble, minValDouble, minValDouble/2, -1.0, 0.0}};
+		Number[][] numArray = DataUtilities.createNumberArray2D(doubleArray);
+		
+		for(int i=0; i < doubleArray.length; i++) {
+			for(int j=0; j < doubleArray[i].length; j++)
+				assertEquals(doubleArray[i][j], numArray[i][j]);
+		}
 	}
 }
