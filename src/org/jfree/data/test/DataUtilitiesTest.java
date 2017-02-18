@@ -49,9 +49,9 @@ public class DataUtilitiesTest {
 				will(returnValue(0));
 				
 				
-				/***********************************************/
-				/* *** COLUMNS FOR COLUMN TESTING (GURVIR) *** */
-				/***********************************************/
+				/**************************************/
+				/* *** COLUMNS FOR COLUMN TESTING *** */
+				/**************************************/
 
 				// Zero Test (Columns)
 				one(values).getValue(0, 2);
@@ -161,35 +161,41 @@ public class DataUtilitiesTest {
 				
 				
 				
-				/*****************************************/
-				/* *** ROWS FOR ROW TESTING (ANGELA) *** */
-				/*****************************************/
+				/********************************/
+				/* *** ROWS FOR ROW TESTING *** */
+				/********************************/
 				
+				// Nominal Values Test (Row)
 				one(values).getValue(2, 0); 
 				will(returnValue(4.2));     
 				one(values).getValue(2, 1); 
 				will(returnValue(7.8));    
 				
+				// Zero Test (Row)
 				one(values).getValue(3, 0);
 				will(returnValue(0));
 				one(values).getValue(3, 1);
 				will(returnValue(0));
 				
+				// Max Value Test 1 (Row)
 				one(values).getValue(4, 0);     
 				will(returnValue(maxValDouble)); 
 				one(values).getValue(4, 1);     
 				will(returnValue(0)); 
 				
+				// Max Value Test 2 (Row)
 				one(values).getValue(5, 0);     
 				will(returnValue(maxValDouble/2)); 
 				one(values).getValue(5, 1);     
 				will(returnValue(maxValDouble/2)); 
 				
+				// Min Value Test 1 (Row)
 				one(values).getValue(6, 0);     
 				will(returnValue(minValDouble)); 
 				one(values).getValue(6, 1);     
 				will(returnValue(0)); 
 				
+				// Min Value Test 2 (Row)
 				one(values).getValue(7, 0);     
 				will(returnValue(minValDouble/2)); 
 				one(values).getValue(7, 1);     
@@ -270,13 +276,14 @@ public class DataUtilitiesTest {
 	 * calculateRowTotal(Values2D data, int row) - Angela
 	 */
 	
+	// Normal Test
 	@Test
 	public void calculateRowTotalNominalTest() {
 		double result = DataUtilities.calculateRowTotal(values, 2);
 		assertEquals(12.0, result, .000000001d);
 	}
 	
-	
+	// False Normal test, row 14 not instantiated so an error should be thrown
 	@Test
 	public void calculateRowTotalFalseNominalTest() {
 		try {
@@ -288,31 +295,35 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Total Row full of 0's
 	@Test
 	public void calculateRowTotalZeroTest() {
 		double result = DataUtilities.calculateRowTotal(values, 3);
 		assertEquals(0, result, .000000001d);
 	}
 	
-	
+	// Total Row where one column is max double value
 	@Test
 	public void calculateRowTotalMaximumTest1() {		
 		double result = DataUtilities.calculateRowTotal(values, 4);
 		assertEquals(maxValDouble, result, .000000001d);
 	}
 	
+	// Total Row where two columns are half of max double value
 	@Test
 	public void calculateRowTotalMaximumTest2() {
 		double result = DataUtilities.calculateRowTotal(values, 5);
 		assertEquals(maxValDouble, result, .000000001d);
 	}
 	
+	// Total Row where one column is minimum double value
 	@Test
 	public void calculateRowTotalMinimumTest1() {		
 		double result = DataUtilities.calculateRowTotal(values, 6);
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
+	// Total Row where two columns are half of min double value
 	@Test
 	public void calculateRowTotalMinimumTest2() {		
 		double result = DataUtilities.calculateRowTotal(values, 7);
