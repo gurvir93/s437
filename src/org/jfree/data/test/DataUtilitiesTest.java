@@ -13,11 +13,13 @@ import org.junit.Test;
 
 public class DataUtilitiesTest {
 
+	// Objects for mock objects
 	private Mockery mockContextValues2D;
 	private Values2D values;
 	private Mockery mockContextKeyedValues;
 	private KeyedValues keyValues;
 	
+	// Maximum and Minimum double values for testing
 	private double maxValDouble = Double.MAX_VALUE;
 	private double minValDouble = Double.MIN_VALUE;
 	
@@ -199,19 +201,23 @@ public class DataUtilitiesTest {
 	@After
 	public void tearDown() throws Exception {
 		mockContextValues2D = null;
+		mockContextKeyedValues = null;
 		values = null;
+		keyValues = null;
 	}
 
 	/*
 	 * CALCULATECOLUMNTOTAL()
 	 */
 	
+	// Normal Test
 	@Test
 	public void calculateColumnTotalNominalTest() {
 		double result = DataUtilities.calculateColumnTotal(values, 7);
 		assertEquals(10.0, result, .000000001d);
 	}
 	
+	// False Normal test, column 15 not instantiated so an error should be thrown
 	@Test
 	public void calculateColumnTotalFalseNominalTest() {
 		try {
@@ -223,30 +229,35 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Total column full of 0's
 	@Test
 	public void calculateColumnTotalZeroTest() {
 		double result = DataUtilities.calculateColumnTotal(values, 2);
 		assertEquals(0, result, .000000001d);
 	}
 	
+	// Total Column where one row is max double value
 	@Test
 	public void calculateColumnTotalMaximumTest1() {		
 		double result = DataUtilities.calculateColumnTotal(values, 3);
 		assertEquals(maxValDouble, result, .000000001d);
 	}
 	
+	// Total column where two rows are half of max double value
 	@Test
 	public void calculateColumnTotalMaximumTest2() {
 		double result = DataUtilities.calculateColumnTotal(values, 4);
 		assertEquals(maxValDouble, result, .000000001d);
 	}
 	
+	// Total Column where one row is minimum double value
 	@Test
 	public void calculateColumnTotalMinimumTest1() {		
 		double result = DataUtilities.calculateColumnTotal(values, 5);
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
+	// Total column where two rows are half of minimum double value
 	@Test
 	public void calculateColumnTotalMinimumTest2() {
 		double result = DataUtilities.calculateColumnTotal(values, 6);
@@ -313,6 +324,7 @@ public class DataUtilitiesTest {
 	 * CREATENUMBERARRAY()
 	 */
 	
+	// Test a normal array
 	@Test
 	public void createNumberArrayNominalTest() {
 		double[] doubleArray = {0, 1, 2, 3, 4};
@@ -326,6 +338,7 @@ public class DataUtilitiesTest {
 		assertEquals(doubleArray[4], numArray[4]);
 	}
 	
+	// False normal check between 2 arrays that are not equal
 	@Test
 	public void createNumberArrayFalseNominalTest() {
 		double[] doubleArray = {0, 1, 2, 3, 4};
@@ -336,6 +349,7 @@ public class DataUtilitiesTest {
 		
 	}
 	
+	// Check for all zero value array
 	@Test
 	public void createNumberArrayZeroTest() {
 		double[] doubleArray = {0.0, 0.0, 0.0, 0.0, 0.0};
@@ -345,6 +359,7 @@ public class DataUtilitiesTest {
 			assertEquals((double)0.0, numArray[i]);
 	}
 	
+	// Check for max double value in different array elements
 	@Test
 	public void createNumberArrayMaximumTest() {
 		double[] doubleArray = {0.0, maxValDouble/2, maxValDouble, maxValDouble};
@@ -356,6 +371,7 @@ public class DataUtilitiesTest {
 		assertEquals(doubleArray[3], numArray[3]);
 	}
 	
+	// Check for minimum double value in different array elements
 	@Test
 	public void createNumberArrayMinimumTest() {
 		double[] doubleArray = {0.0, -1.0, minValDouble/2, minValDouble, minValDouble};
@@ -373,6 +389,7 @@ public class DataUtilitiesTest {
 	 * CREATENUMBERARRAY2D()
 	 */
 	
+	// Check for normal 2d array of doubles
 	@Test
 	public void createNumberArray2DNominalTest() {
 		double[][] doubleArray = 
@@ -388,6 +405,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// False normal, check equality between 2 different double arrays
 	@Test
 	public void createNumberArray2DFalseNominalTest() {
 		double[][] doubleArray = 
@@ -401,6 +419,7 @@ public class DataUtilitiesTest {
 		assertEquals(false, numFalseArray == numArray);
 	}
 	
+	// Zero 2D array test
 	@Test
 	public void createNumberArray2DZeroTest() {
 		double[][] doubleArray = 
@@ -414,6 +433,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Maximum test, test maximum values of double
 	@Test
 	public void createNumberArray2DMaximumTest() {
 		double[][] doubleArray = 
@@ -427,6 +447,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Minimum test, test minimum values of double
 	@Test
 	public void createNumberArray2DMinimumTest() {
 		double[][] doubleArray = 
@@ -447,6 +468,8 @@ public class DataUtilitiesTest {
 	 * Note: These tests have expectations set in each test as the only way 
 	 * 		 to get around this is to create several mock objects.
 	 */
+	
+	// Normal test, check positive double values close to 0
 	@Test
 	public void getCumulativePercentagesNominalTest() {
 		mockContextKeyedValues.checking(new Expectations() {
@@ -476,6 +499,8 @@ public class DataUtilitiesTest {
 		for(int i=0; i < keyValues.getItemCount(); i++)
 			cumTotal += keyValues.getValue(i).doubleValue();
 		
+		
+		// A loop that checks the cumulative total against the function (used in all tests below)
 		double currentTotal = 0;
 		for (int i=0; i < keyValues.getItemCount(); i++) {
 			currentTotal += keyValues.getValue(i).doubleValue(); 
@@ -483,6 +508,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Test minimum double values as key's
 	@Test
 	public void getCumulativePercentagesMinimumTest() {
 		mockContextKeyedValues.checking(new Expectations() {
@@ -519,6 +545,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Test maximum double values as key;s
 	@Test
 	public void getCumulativePercentagesMaximumTest() {
 		mockContextKeyedValues.checking(new Expectations() {
@@ -555,6 +582,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Zero test, all keys are zero (this checks the dividing by zero cases)
 	@Test
 	public void getCumulativePercentagesZeroTest() {
 		mockContextKeyedValues.checking(new Expectations() {
@@ -591,6 +619,7 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Test where keys add to zero but some keys are non-zero (also dividing by zero test)
 	@Test
 	public void getCumulativePercentagesEqualToZeroTest() {
 		mockContextKeyedValues.checking(new Expectations() {
