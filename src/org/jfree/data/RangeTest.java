@@ -235,4 +235,138 @@ public class RangeTest {
 		
 		assertEquals(true, rangeObjectTwo.equals(rangeObjectShifted));
 	}
+	
+	/*
+	 * For Code Coverage increase
+	 */
+	
+	
+	@Test
+	public void ExpandRangeTest(){
+
+		rangeObject = new Range(2, 6);
+		Range rangeObjectTwo = new Range(1, 8);
+		
+		Range rangeObjectExpanded = Range.expand(rangeObject, 0.25, 0.5);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	@Test
+	public void ExpandToIncludeRangeUpperTest(){
+		double expandValue = 5;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-100, 105);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	@Test
+	public void ExpandToIncludeRangeLowerTest(){
+		double expandValue = -5;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-105, 100);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	@Test
+	public void ExpandToIncludeRangeNullTest(){
+		double expandValue = 5;
+		
+		rangeObject = null;
+		Range rangeObjectTwo = new Range(5, 5);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+		
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	@Test
+	public void CombineTest(){
+
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-200, -99);
+		
+		Range rangeObjectCombined = Range.combine(rangeObject, rangeObjectTwo);
+		
+		Range comparedRangeObject = new Range(-200, 100);
+		
+		assertEquals(true, rangeObjectCombined.equals(comparedRangeObject));
+	}
+	
+	@Test
+	public void CombineNullOneTest(){
+
+		rangeObject = null;
+		Range rangeObjectTwo = new Range(-200, -99);
+		
+		Range rangeObjectCombined = Range.combine(rangeObject, rangeObjectTwo);
+		
+		assertEquals(true, rangeObjectCombined.equals(rangeObjectTwo));
+	}
+	
+	@Test
+	public void CombineNullTwoTest(){
+
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = null;
+		
+		Range rangeObjectCombined = Range.combine(rangeObject, rangeObjectTwo);
+		
+		assertEquals(true, rangeObjectCombined.equals(rangeObject));
+	}
+	
+	@Test
+	public void ConstrainUpperTest(){
+
+		rangeObject = new Range(-100, 100);
+		double constrainValue = 102;
+		
+		double returnedConstrained = rangeObject.constrain(constrainValue);
+		
+		assertEquals(100, returnedConstrained, 0);
+	}
+	
+	@Test
+	public void ConstrainLowerTest(){
+
+		rangeObject = new Range(-100, 100);
+		double constrainValue = -102;
+		
+		double returnedConstrained = rangeObject.constrain(constrainValue);
+		
+		assertEquals(-100, returnedConstrained, 0);
+	}
+	
+	@Test
+	public void HashCodeTest(){
+		rangeObject = new Range(-100, 100);
+
+        assertEquals(174981120, rangeObject.hashCode());
+	}
+	
+	@Test
+	public void ToStringTest(){
+		rangeObject = new Range(-100,100);
+		
+		String rangeString = "Range[-100,100]";
+		
+		assertEquals(true, rangeObject.toString().equals(rangeString));
+	}
+	
+	@Test
+	public void notEqualsTest(){
+		rangeObject = new Range(-100,100);
+		
+		String rangeString = "Range[-100,100]";
+		
+		assertEquals(false, rangeObject.equals(rangeString));
+	}
 }
