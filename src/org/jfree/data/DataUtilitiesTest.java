@@ -286,6 +286,7 @@ public class DataUtilitiesTest {
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
+	// Null value test
 	@Test
 	public void calculateColumnTotalNullTest() {
 		double result = DataUtilities.calculateColumnTotal(values, 8);
@@ -411,6 +412,16 @@ public class DataUtilitiesTest {
 		assertEquals(doubleArray[4], numArray[4]);
 	}
 	
+	// Null array test
+	@Test
+	public void createNumberArrayNullTest() {
+		try {
+			DataUtilities.createNumberArray(null);
+			fail();
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
 	
 	/*
 	 * CREATENUMBERARRAY2D()
@@ -488,6 +499,16 @@ public class DataUtilitiesTest {
 		}
 	}
 	
+	// Null array test
+	@Test
+	public void createNumberArray2DNullTest() {
+		try {
+			DataUtilities.createNumberArray2D(null);
+			fail();
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
 	
 	/*
 	 * GETCUMULATIVEPERCENTAGES()
@@ -682,5 +703,41 @@ public class DataUtilitiesTest {
 			assertEquals(currentTotal/cumTotal, cumVal.getValue(i).doubleValue(), .000000001d);
 		}
 	}
+	
+	// Null object test
+	@Test
+	public void getCumulativePercentagesNullTest() {
+		try {
+			DataUtilities.getCumulativePercentages(null);
+			fail();
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+	
+	// Null value test
+		@Test
+		public void getCumulativePercentagesNullValuesTest() {
+			mockContextKeyedValues.checking(new Expectations() {
+				{				
+					allowing(keyValues).getItemCount();
+					will(returnValue(1));
+					
+					allowing(keyValues).getKey(0);
+					will(returnValue(null));
+					
+					allowing(keyValues).getValue(0);
+					will(returnValue(null));
+				}			
+			});
+			
+			try {
+				DataUtilities.getCumulativePercentages(keyValues);
+				fail();
+			} catch (Exception e) {
+				assertTrue(true);
+			}
+		}
+	
 	
 }
