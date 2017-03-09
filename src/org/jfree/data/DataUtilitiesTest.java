@@ -36,7 +36,7 @@ public class DataUtilitiesTest {
 				will(returnValue(8));      
 
 				one(values).getColumnCount(); 
-				will(returnValue(8));     
+				will(returnValue(9));     
 				
 				/**********************************/
 				/* *** UNUSED ROWS & COLUMNS *** */
@@ -157,7 +157,24 @@ public class DataUtilitiesTest {
 				one(values).getValue(6, 7);     
 				will(returnValue(0));     
 				one(values).getValue(7, 7);  
-				will(returnValue(0)); 
+				will(returnValue(0));
+				
+				one(values).getValue(0, 8);
+				will(returnValue(null));
+				one(values).getValue(1, 8);
+				will(returnValue(null));
+				one(values).getValue(2, 8);
+				will(returnValue(null));
+				one(values).getValue(3, 8);
+				will(returnValue(null));
+				one(values).getValue(4, 8);
+				will(returnValue(null));
+				one(values).getValue(5, 8);
+				will(returnValue(null));
+				one(values).getValue(6, 8);
+				will(returnValue(null));
+				one(values).getValue(7, 8);
+				will(returnValue(null));
 				
 				
 				
@@ -194,6 +211,11 @@ public class DataUtilitiesTest {
 				will(returnValue(minValDouble/2)); 
 				one(values).getValue(7, 1);     
 				will(returnValue(minValDouble/2));
+				
+				one(values).getValue(8, 0);     
+				will(returnValue(0)); 
+				one(values).getValue(8, 1);     
+				will(returnValue(0)); 
 			}
 		});
 	}
@@ -264,6 +286,11 @@ public class DataUtilitiesTest {
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
+	@Test
+	public void calculateColumnTotalNullTest() {
+		double result = DataUtilities.calculateColumnTotal(values, 8);
+		assertEquals(0.0, result, .000000001d);
+	}
 	
 	/*
 	 * CALCULATEROWTOTAL()
