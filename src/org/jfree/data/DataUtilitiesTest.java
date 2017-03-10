@@ -240,15 +240,10 @@ public class DataUtilitiesTest {
 	}
 	
 	// False Normal test, column 15 not instantiated so an error should be thrown
-	@Test
-	public void calculateColumnTotalFalseNominalTest() {
-		try {
-			DataUtilities.calculateColumnTotal(values, 15);
-			fail();
-		}
-		catch(Error e){
-			assertTrue(true);
-		}
+	@Test (expected = Exception.class)
+	public void calculateColumnTotalFalseNominalTest() throws InstantiationException, IllegalAccessException {
+		Values2D emptyVals2D = Values2D.class.newInstance();
+		DataUtilities.calculateColumnTotal(emptyVals2D, 1);
 	}
 	
 	// Total column full of 0's
@@ -305,15 +300,10 @@ public class DataUtilitiesTest {
 	}
 	
 	
-	@Test
-	public void calculateRowTotalFalseNominalTest() {
-		try {
-			DataUtilities.calculateRowTotal(values, 14);
-			fail();
-		}
-		catch(Error e){
-			assertTrue(true);
-		}
+	@Test (expected = Exception.class)
+	public void calculateRowTotalFalseNominalTest() throws InstantiationException, IllegalAccessException {
+		Values2D emptyVals2D = Values2D.class.newInstance();
+		DataUtilities.calculateRowTotal(emptyVals2D, 1);
 	}
 	
 	@Test
@@ -413,14 +403,9 @@ public class DataUtilitiesTest {
 	}
 	
 	// Null array test
-	@Test
+	@Test (expected = IllegalArgumentException.class)
 	public void createNumberArrayNullTest() {
-		try {
-			DataUtilities.createNumberArray(null);
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+		DataUtilities.createNumberArray(null);
 	}
 	
 	/*
@@ -500,14 +485,9 @@ public class DataUtilitiesTest {
 	}
 	
 	// Null array test
-	@Test
+	@Test (expected = IllegalArgumentException.class)
 	public void createNumberArray2DNullTest() {
-		try {
-			DataUtilities.createNumberArray2D(null);
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+		DataUtilities.createNumberArray2D(null);
 	}
 	
 	/*
@@ -705,18 +685,13 @@ public class DataUtilitiesTest {
 	}
 	
 	// Null object test
-	@Test
+	@Test (expected = IllegalArgumentException.class)
 	public void getCumulativePercentagesNullTest() {
-		try {
-			DataUtilities.getCumulativePercentages(null);
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);
-		}
+		DataUtilities.getCumulativePercentages(null);
 	}
 	
 	// Null value test
-		@Test
+		@Test (expected = IllegalArgumentException.class)
 		public void getCumulativePercentagesNullValuesTest() {
 			mockContextKeyedValues.checking(new Expectations() {
 				{				
@@ -730,13 +705,9 @@ public class DataUtilitiesTest {
 					will(returnValue(null));
 				}			
 			});
-			
-			try {
-				DataUtilities.getCumulativePercentages(keyValues);
-				fail();
-			} catch (Exception e) {
-				assertTrue(true);
-			}
+
+			DataUtilities.getCumulativePercentages(keyValues);
+
 		}
 	
 	
