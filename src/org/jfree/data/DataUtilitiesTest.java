@@ -149,9 +149,9 @@ public class DataUtilitiesTest {
 				one(values).getValue(2, 7);     
 				will(returnValue(2.5));     
 				one(values).getValue(3, 7);  
-				will(returnValue(7.0)); 
+				will(returnValue(0)); 
 				one(values).getValue(4, 7);     
-				will(returnValue(0));     
+				will(returnValue(7.0));     
 				one(values).getValue(5, 7);  
 				will(returnValue(0.5)); 
 				one(values).getValue(6, 7);     
@@ -296,7 +296,7 @@ public class DataUtilitiesTest {
 	@Test
 	public void calculateRowTotalNominalTest() {
 		double result = DataUtilities.calculateRowTotal(values, 2);
-		assertEquals(12.0, result, .000000001d);
+		assertEquals(14.5, result, .000000001d);
 	}
 	
 	
