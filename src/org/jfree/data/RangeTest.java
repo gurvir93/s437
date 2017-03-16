@@ -13,7 +13,7 @@ public class RangeTest {
 
 	private Range rangeObject;
 	private double maxValDouble = Double.MAX_VALUE;
-	private double minValDouble = Double.MIN_VALUE;
+	private double minValDouble = -Double.MIN_VALUE;
 	
 	@Before
 	public void setUp() throws Exception {
