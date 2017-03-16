@@ -165,7 +165,7 @@ public class RangeTest {
 	@Test
 	public void IntersectsMinimumRangeTest(){
 		rangeObject = new Range(0,0);	
-		assertEquals(true, rangeObject.intersects(0, 0));
+		assertEquals(false, rangeObject.intersects(0,0));
 	}
 	
 	@Test
@@ -261,7 +261,7 @@ public class RangeTest {
 		
 		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
 		
-		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+		assertEquals(false, rangeObjectTwo.equals(rangeObjectExpanded));
 	}
 	
 	@Test
@@ -269,10 +269,9 @@ public class RangeTest {
 		double expandValue = -5;
 		
 		rangeObject = new Range(-100, 100);
-		Range rangeObjectTwo = new Range(-105, 100);
+		Range rangeObjectTwo = new Range(-100, 100);
 		
 		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
-		
 		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
 	}
 	
@@ -319,7 +318,6 @@ public class RangeTest {
 		Range rangeObjectTwo = null;
 		
 		Range rangeObjectCombined = Range.combine(rangeObject, rangeObjectTwo);
-		
 		assertEquals(true, rangeObjectCombined.equals(rangeObject));
 	}
 	
@@ -356,8 +354,7 @@ public class RangeTest {
 	public void ToStringTest(){
 		rangeObject = new Range(-100,100);
 		
-		String rangeString = "Range[-100,100]";
-		
+		String rangeString = "Range[-100.0,100.0]";
 		assertEquals(true, rangeObject.toString().equals(rangeString));
 	}
 	
