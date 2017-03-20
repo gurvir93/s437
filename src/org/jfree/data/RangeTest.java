@@ -366,4 +366,25 @@ public class RangeTest {
 		
 		assertEquals(false, rangeObject.equals(rangeString));
 	}
+	
+	/**
+	 * ADDED FOR INCREASED MUTATION TESTING
+	 */
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void errorTest(){
+		rangeObject = new Range(100, -100);
+	}
+	
+	@Test
+	public void ShiftDownNoZeroCrossingTest(){
+		double shiftValue = -80;
+		rangeObject = new Range(10, 100);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue, true);
+		
+		Range trueRangeObject = new Range(0, 20);
+		
+		assertEquals(true, rangeObjectShifted.equals(trueRangeObject));
+	}
 }
