@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.jfree.data.Range;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.lang.Double;
 
@@ -366,4 +368,76 @@ public class RangeTest {
 		
 		assertEquals(false, rangeObject.equals(rangeString));
 	}
+	
+	/*
+	 * For PiTest increase
+	 */
+	@Test
+	public void IntersectsLessThanLowerTest(){
+		assertEquals(false, rangeObject.intersects(-99, 100));
+	}
+	
+	@Test
+	public void IntersectLowerGreaterThanHigherTest(){
+		assertEquals(false, rangeObject.intersects(-50, -101));
+	}
+	
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void falseRangeObjectTest() throws IllegalArgumentException {
+		rangeObject = new Range(100,-100);
+	}
+	
+	/*Didnt change percentage
+	@Test
+	public void ExpandToIncludeRangeEqualToUpperTest(){
+		double expandValue = 100;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-100, 100);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	//Line 229: Change conditional boundary 
+	@Test
+	public void ExpandToIncludeEqualToLowerTest(){
+		double expandValue = -100;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-100, 100);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+	
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	//Line 232: Changed Conditional Boundary
+	@Test
+	public void ExpandToIncludeEqualToUpperTest(){
+		double expandValue = 100;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-100, 100);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+	
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	*/
+	//Line 321: Substituted 0.0 with 1.0
+	@Test
+	public void shiftWithNoZeroCrossing() {
+		double shiftValue = 0;
+		rangeObject = new Range(-0.5,0.5);
+		Range rangeObjectTwo = new Range(0,0);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue, false);
+		System.out.println(rangeObjectShifted);
+		assertEquals(false, rangeObjectTwo.equals(rangeObjectShifted));
+	}
+
 }
