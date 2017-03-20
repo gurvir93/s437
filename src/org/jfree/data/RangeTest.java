@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.jfree.data.Range;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.lang.Double;
 
@@ -367,8 +369,8 @@ public class RangeTest {
 		assertEquals(false, rangeObject.equals(rangeString));
 	}
 	
-	/**
-	 * ADDED FOR INCREASED MUTATION TESTING
+	/*
+	 * For PiTest increase
 	 */
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -381,10 +383,56 @@ public class RangeTest {
 		double shiftValue = -80;
 		rangeObject = new Range(10, 100);
 		
-		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue, true);
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue, false);
 		
 		Range trueRangeObject = new Range(0, 20);
 		
 		assertEquals(true, rangeObjectShifted.equals(trueRangeObject));
 	}
+	
+	@Test
+	public void ShiftUpNoZeroCrossingTest(){
+		double shiftValue = 80;
+		rangeObject = new Range(-100, -20);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue, false);
+		
+		Range trueRangeObject = new Range(-20, 0);
+		
+		assertEquals(true, rangeObjectShifted.equals(trueRangeObject));
+	}
+
+	
+	@Test
+	public void IntersectsLessThanLowerTest(){
+		assertEquals(false, rangeObject.intersects(-99, 100));
+	}
+	
+	@Test
+	public void IntersectLowerGreaterThanHigherTest(){
+		assertEquals(false, rangeObject.intersects(-50, -101));
+	}
+	
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void falseRangeObjectTest() throws IllegalArgumentException {
+		rangeObject = new Range(100,-100);
+	}
+	
+	@Test
+	public void TestShiftAllowZero(){
+		
+		double shiftValue = 80;
+		rangeObject = new Range(-100, -20);
+		
+		Range rangeObjectShifted = Range.shift(rangeObject, shiftValue, true);
+		
+		Range trueRangeObject = new Range(-20, 60);
+		
+		assertEquals(true, rangeObjectShifted.equals(trueRangeObject));
+	}
+
+
 }

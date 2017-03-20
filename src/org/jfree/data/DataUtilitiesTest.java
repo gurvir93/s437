@@ -281,12 +281,12 @@ public class DataUtilitiesTest {
 		assertEquals(minValDouble, result, .000000001d);
 	}
 	
-//	// Null value test
-//	@Test
-//	public void calculateColumnTotalNullTest() {
-//		double result = DataUtilities.calculateColumnTotal(values, 8);
-//		assertEquals(0.0, result, .000000001d);
-//	}
+	// Null value test
+	@Test
+	public void calculateColumnTotalNullTest() {
+		double result = DataUtilities.calculateColumnTotal(values, 8);
+		assertEquals(0.0, result, .000000001d);
+	}
 	
 	/*
 	 * CALCULATEROWTOTAL()
@@ -402,11 +402,11 @@ public class DataUtilitiesTest {
 		assertEquals(doubleArray[4], numArray[4]);
 	}
 	
-//	// Null array test
-//	@Test (expected = IllegalArgumentException.class)
-//	public void createNumberArrayNullTest() {
-//		DataUtilities.createNumberArray(null);
-//	}
+	// Null array test
+	@Test (expected = IllegalArgumentException.class)
+	public void createNumberArrayNullTest() {
+		DataUtilities.createNumberArray(null);
+	}
 	
 	/*
 	 * CREATENUMBERARRAY2D()
@@ -484,11 +484,11 @@ public class DataUtilitiesTest {
 		}
 	}
 	
-//	// Null array test
-//	@Test (expected = IllegalArgumentException.class)
-//	public void createNumberArray2DNullTest() {
-//		DataUtilities.createNumberArray2D(null);
-//	}
+	// Null array test
+	@Test (expected = IllegalArgumentException.class)
+	public void createNumberArray2DNullTest() {
+		DataUtilities.createNumberArray2D(null);
+	}
 	
 	/*
 	 * GETCUMULATIVEPERCENTAGES()
@@ -684,31 +684,31 @@ public class DataUtilitiesTest {
 		}
 	}
 	
-//	// Null object test
-//	@Test (expected = IllegalArgumentException.class)
-//	public void getCumulativePercentagesNullTest() {
-//		DataUtilities.getCumulativePercentages(null);
-//	}
-//	
-//	// Null value test
-//		@Test (expected = IllegalArgumentException.class)
-//		public void getCumulativePercentagesNullValuesTest() {
-//			mockContextKeyedValues.checking(new Expectations() {
-//				{				
-//					allowing(keyValues).getItemCount();
-//					will(returnValue(1));
-//					
-//					allowing(keyValues).getKey(0);
-//					will(returnValue(null));
-//					
-//					allowing(keyValues).getValue(0);
-//					will(returnValue(null));
-//				}			
-//			});
-//
-//			DataUtilities.getCumulativePercentages(keyValues);
-//
-//		}
+	// Null object test
+	@Test (expected = IllegalArgumentException.class)
+	public void getCumulativePercentagesNullTest() {
+		DataUtilities.getCumulativePercentages(null);
+	}
+	
+	// Null value test
+		@Test (expected = IllegalArgumentException.class)
+		public void getCumulativePercentagesNullValuesTest() {
+			mockContextKeyedValues.checking(new Expectations() {
+				{				
+					allowing(keyValues).getItemCount();
+					will(returnValue(1));
+					
+					allowing(keyValues).getKey(0);
+					will(returnValue(null));
+					
+					allowing(keyValues).getValue(0);
+					will(returnValue(null));
+				}			
+			});
+
+			DataUtilities.getCumulativePercentages(keyValues);
+
+		}
 	
 	
 }
