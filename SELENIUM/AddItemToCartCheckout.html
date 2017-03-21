@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://www.amazon.ca/" />
+<title>AddItemToCartCheckout</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">AddItemToCartCheckout</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/DECKER-TR1278BD-2-Slice-Toaster-Black/dp/B00V5VEYBE/ref=sr_1_1?s=kitchen-substore&amp;ie=UTF8&amp;qid=1490120491&amp;sr=1-1&amp;keywords=toaster</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=add-to-cart-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=hlb-ptc-btn-native</td>
+	<td>*Proceed to checkout*</td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>exact:Amazon.ca Shopping Cart</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=hlb-ptc-btn-native</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>exact:Amazon Sign In</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
