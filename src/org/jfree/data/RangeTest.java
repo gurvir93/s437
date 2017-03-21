@@ -27,6 +27,21 @@ public class RangeTest {
 		rangeObject = null;
 	}
 
+	@Test (expected = IllegalArgumentException.class)
+	public void rangeObjectTest() {
+		
+		// Test for exception message
+		try {
+			rangeObject = new Range(100, 0);
+		}
+		catch(IllegalArgumentException e) {
+			assertEquals("Range(double, double): require lower (100.0) <= upper (0.0).", e.getMessage());
+		}
+		
+		// Will get caught by expected
+		rangeObject = new Range(100, 0);
+	}
+	
 	/*
 	 * GETCENTRALVALUE()
 	 */
