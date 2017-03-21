@@ -279,6 +279,21 @@ public class RangeTest {
 		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
 		
 		assertEquals(false, rangeObjectTwo.equals(rangeObjectExpanded));
+		rangeObjectTwo = new Range(-100, 100);
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+
+	}
+	
+	@Test
+	public void expandToIncludeRangeIncreaseUpperTest(){
+		double expandValue = 110;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-100, 110);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+
 	}
 	
 	@Test
@@ -290,6 +305,18 @@ public class RangeTest {
 		
 		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
 		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+	}
+	
+	@Test
+	public void expandToIncludeRangeIncreaseLowerTest(){
+		double expandValue = -105;
+		
+		rangeObject = new Range(-100, 100);
+		Range rangeObjectTwo = new Range(-105, 100);
+		
+		Range rangeObjectExpanded = Range.expandToInclude(rangeObject, expandValue);
+		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
+
 	}
 	
 	@Test
@@ -336,6 +363,16 @@ public class RangeTest {
 		
 		Range rangeObjectCombined = Range.combine(rangeObject, rangeObjectTwo);
 		assertEquals(true, rangeObjectCombined.equals(rangeObject));
+	}
+	
+	@Test
+	public void constrainInRangeTest() {
+		rangeObject = new Range(0, 100);
+		double constrainValue = 42;
+		
+		double returnedConstrained = rangeObject.constrain(constrainValue);
+		
+		assertEquals(42, returnedConstrained, 0);
 	}
 	
 	@Test
@@ -417,6 +454,10 @@ public class RangeTest {
 		assertEquals(true, rangeObjectShifted.equals(trueRangeObject));
 	}
 
+	@Test
+	public void instersectsOneValueInsideTest() {
+		assertEquals(true, rangeObject.intersects(-99, -99));
+	}
 	
 	@Test
 	public void IntersectsLessThanLowerTest(){
