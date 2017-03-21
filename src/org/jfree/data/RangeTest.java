@@ -269,6 +269,12 @@ public class RangeTest {
 		assertEquals(true, rangeObjectTwo.equals(rangeObjectExpanded));
 	}
 	
+	@Test (expected = IllegalArgumentException.class)
+	public void expandNullTest() {
+		rangeObject = null;
+		Range.expand(rangeObject, 0, 1);
+	}
+	
 	@Test
 	public void ExpandToIncludeRangeUpperTest(){
 		double expandValue = 5;
