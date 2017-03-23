@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://www.amazon.ca/" />
+<title>Amazon - Product Sort - Release Date</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Amazon - Product Sort - Release Date</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=span.nav-line-2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//a[contains(text(),'All Video Games')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='leftNavContainer']/ul/ul/div/li[3]/span/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='leftNavContainer']/ul/ul/div/li[3]/span/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.a-color-state.a-text-bold</td>
+	<td>Games</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=sort</td>
+	<td>Popularity Price: Low to High Price: High to Low Avg. Customer Review Release Date</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=sort</td>
+	<td>label=Release Date</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=sort</td>
+	<td>Popularity Price: Low to High Price: High to Low Avg. Customer Review Release Date</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.a-size-small.a-color-secondary &gt; span.a-color-secondary</td>
+	<td>Prime Members save 20% off list price</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
