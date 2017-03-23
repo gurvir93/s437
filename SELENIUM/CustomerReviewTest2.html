@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://www.amazon.ca/" />
+<title>Amazon - Customer Review - View specfic review</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Amazon - Customer Review - View specfic review</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/ref=nav_logo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=twotabsearchtextbox</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=twotabsearchtextbox</td>
+	<td>xbox one s</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.nav-input</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.a-color-state.a-text-bold</td>
+	<td>&quot;xbox one s&quot;</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//li[@id='result_0']/div/div/div/div[2]/div[2]/div/a/h2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h3.a-spacing-small</td>
+	<td>Top Customer Reviews</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=GREAT!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=b.h3color.tiny</td>
+	<td>Verified Purchase</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=span.votingPrompt</td>
+	<td>exact:Was this review helpful to you?</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

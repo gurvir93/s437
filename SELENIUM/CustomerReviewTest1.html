@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://www.amazon.ca/" />
+<title>Amazon - Customer Reviews - Check product reviews</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Amazon - Customer Reviews - Check product reviews</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=twotabsearchtextbox</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=twotabsearchtextbox</td>
+	<td>bose soundlink 3</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.nav-input</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='result_0']/div/div/div/div[2]/div/div[2]/span[2]</td>
+	<td>Bose</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=144</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=dp-customer-review-header</td>
+	<td>Customer Reviews</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=dp-summary-see-all-reviews</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h4.a-size-medium.view-point-title</td>
+	<td>Top positive review</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
