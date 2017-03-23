@@ -10,6 +10,8 @@
 <tr><td><b>Test Suite</b></td></tr>
 <tr><td><a href="ProductSortTest1.html">Amazon - Product Sort - Avg. Customer Review</a></td></tr>
 <tr><td><a href="ProductSortTest2.html">Amazon - Product Sort - Price Low to High</a></td></tr>
+<tr><td><a href="CustomerReviewTest1.html">Amazon - Customer Reviews - Check product reviews</a></td></tr>
+<tr><td><a href="CustomerReviewTest2.html">Amazon - Customer Review - View specfic review</a></td></tr>
 </tbody></table>
 </body>
 </html>
