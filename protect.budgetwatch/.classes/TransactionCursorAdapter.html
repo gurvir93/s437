@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: TransactionCursorAdapter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">protect.budgetwatch</a> ]
+</div>
+
+<h1>Coverage Summary for Class: TransactionCursorAdapter (protect.budgetwatch)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TransactionCursorAdapter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (29/ 29)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">TransactionCursorAdapter$ViewHolder</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (30/ 30)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package protect.budgetwatch;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.annotation.SuppressLint;
+<i>4</i>&nbsp;import android.content.Context;
+<i>5</i>&nbsp;import android.database.Cursor;
+<i>6</i>&nbsp;import android.view.LayoutInflater;
+<i>7</i>&nbsp;import android.view.View;
+<i>8</i>&nbsp;import android.view.ViewGroup;
+<i>9</i>&nbsp;import android.widget.CursorAdapter;
+<i>10</i>&nbsp;import android.widget.ImageView;
+<i>11</i>&nbsp;import android.widget.TextView;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import java.text.DateFormat;
+<i>14</i>&nbsp;import java.text.SimpleDateFormat;
+<i>15</i>&nbsp;import java.util.Locale;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;class TransactionCursorAdapter extends CursorAdapter
+<i>18</i>&nbsp;{
+<i>19</i>&nbsp;    public TransactionCursorAdapter(Context context, Cursor cursor)
+<i>20</i>&nbsp;    {
+<b class="fc"><i>21</i>&nbsp;        super(context, cursor, 0);</b>
+<b class="fc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;    private final DateFormat DATE_FORMATTER = SimpleDateFormat.getDateInstance();</b>
+<i>25</i>&nbsp;
+<b class="fc"><i>26</i>&nbsp;    static class ViewHolder</b>
+<i>27</i>&nbsp;    {
+<i>28</i>&nbsp;        TextView nameField;
+<i>29</i>&nbsp;        TextView valueField;
+<i>30</i>&nbsp;        TextView dateField;
+<i>31</i>&nbsp;        TextView budgetField;
+<i>32</i>&nbsp;        ImageView receiptIcon;
+<i>33</i>&nbsp;        TextView note;
+<i>34</i>&nbsp;        View noteLayout;
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    // The newView method is used to inflate a new view and return it,
+<i>38</i>&nbsp;    // you don&#39;t bind any data to the view at this point.
+<i>39</i>&nbsp;    @Override
+<i>40</i>&nbsp;    public View newView(Context context, Cursor cursor, ViewGroup parent)
+<i>41</i>&nbsp;    {
+<b class="fc"><i>42</i>&nbsp;        View view = LayoutInflater.from(context).inflate(R.layout.transaction_layout, parent, false);</b>
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;        ViewHolder holder = new ViewHolder();</b>
+<b class="fc"><i>45</i>&nbsp;        holder.nameField = (TextView) view.findViewById(R.id.name);</b>
+<b class="fc"><i>46</i>&nbsp;        holder.valueField = (TextView) view.findViewById(R.id.value);</b>
+<b class="fc"><i>47</i>&nbsp;        holder.dateField = (TextView) view.findViewById(R.id.date);</b>
+<b class="fc"><i>48</i>&nbsp;        holder.budgetField = (TextView) view.findViewById(R.id.budget);</b>
+<b class="fc"><i>49</i>&nbsp;        holder.receiptIcon = (ImageView) view.findViewById(R.id.receiptIcon);</b>
+<b class="fc"><i>50</i>&nbsp;        holder.note = (TextView) view.findViewById(R.id.note);</b>
+<b class="fc"><i>51</i>&nbsp;        holder.noteLayout = view.findViewById(R.id.noteLayout);</b>
+<b class="fc"><i>52</i>&nbsp;        view.setTag(holder);</b>
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;        return view;</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    // The bindView method is used to bind all data to a given view
+<i>58</i>&nbsp;    // such as setting the text on a TextView.
+<i>59</i>&nbsp;    @Override
+<i>60</i>&nbsp;    public void bindView(View view, Context context, Cursor cursor)
+<i>61</i>&nbsp;    {
+<b class="fc"><i>62</i>&nbsp;        ViewHolder holder = (ViewHolder)view.getTag();</b>
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;        // Extract properties from cursor
+<b class="fc"><i>65</i>&nbsp;        Transaction transaction = Transaction.toTransaction(cursor);</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;        // Populate fields with extracted properties
+<b class="fc"><i>68</i>&nbsp;        holder.nameField.setText(transaction.description);</b>
+<b class="fc"><i>69</i>&nbsp;        holder.valueField.setText(String.format(Locale.US, &quot;%.2f&quot;, transaction.value));</b>
+<b class="fc"><i>70</i>&nbsp;        holder.budgetField.setText(transaction.budget);</b>
+<i>71</i>&nbsp;
+<b class="fc"><i>72</i>&nbsp;        holder.dateField.setText(DATE_FORMATTER.format(transaction.dateMs));</b>
+<i>73</i>&nbsp;
+<b class="fc"><i>74</i>&nbsp;        if(transaction.receipt.isEmpty())</b>
+<i>75</i>&nbsp;        {
+<b class="fc"><i>76</i>&nbsp;            holder.receiptIcon.setVisibility(View.GONE);</b>
+<i>77</i>&nbsp;        }
+<i>78</i>&nbsp;        else
+<i>79</i>&nbsp;        {
+<b class="fc"><i>80</i>&nbsp;            holder.receiptIcon.setVisibility(View.VISIBLE);</b>
+<i>81</i>&nbsp;        }
+<i>82</i>&nbsp;
+<b class="fc"><i>83</i>&nbsp;        if(transaction.note.isEmpty())</b>
+<i>84</i>&nbsp;        {
+<b class="fc"><i>85</i>&nbsp;            holder.noteLayout.setVisibility(View.GONE);</b>
+<b class="fc"><i>86</i>&nbsp;            holder.note.setText(&quot;&quot;);</b>
+<i>87</i>&nbsp;        }
+<i>88</i>&nbsp;        else
+<i>89</i>&nbsp;        {
+<b class="fc"><i>90</i>&nbsp;            holder.noteLayout.setVisibility(View.VISIBLE);</b>
+<b class="fc"><i>91</i>&nbsp;            holder.note.setText(transaction.note);</b>
+<i>92</i>&nbsp;        }
+<b class="fc"><i>93</i>&nbsp;    }</b>
+<i>94</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-04-05 23:04</div>
+</div>
+</body>
+</html>

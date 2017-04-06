@@ -1,0 +1,421 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BudgetActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">protect.budgetwatch</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BudgetActivity (protect.budgetwatch)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BudgetActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (6/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69.4%
+  </span>
+  <span class="absValue">
+    (68/ 98)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">BudgetActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    81.8%
+  </span>
+  <span class="absValue">
+    (9/ 11)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">BudgetActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">BudgetActivity$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 17)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    53.3%
+  </span>
+  <span class="absValue">
+    (8/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60.2%
+  </span>
+  <span class="absValue">
+    (77/ 128)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package protect.budgetwatch;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import android.app.AlertDialog;
+<i>5</i>&nbsp;import android.content.DialogInterface;
+<i>6</i>&nbsp;import android.content.Intent;
+<i>7</i>&nbsp;import android.os.Bundle;
+<i>8</i>&nbsp;import android.support.v7.app.ActionBar;
+<i>9</i>&nbsp;import android.support.v7.app.AppCompatActivity;
+<i>10</i>&nbsp;import android.support.v7.widget.Toolbar;
+<i>11</i>&nbsp;import android.util.Log;
+<i>12</i>&nbsp;import android.view.ContextMenu;
+<i>13</i>&nbsp;import android.view.Menu;
+<i>14</i>&nbsp;import android.view.MenuInflater;
+<i>15</i>&nbsp;import android.view.MenuItem;
+<i>16</i>&nbsp;import android.view.View;
+<i>17</i>&nbsp;import android.widget.AdapterView;
+<i>18</i>&nbsp;import android.widget.DatePicker;
+<i>19</i>&nbsp;import android.widget.ListView;
+<i>20</i>&nbsp;import android.widget.ProgressBar;
+<i>21</i>&nbsp;import android.widget.TextView;
+<i>22</i>&nbsp;import android.widget.Toast;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;import java.text.DateFormat;
+<i>25</i>&nbsp;import java.util.Calendar;
+<i>26</i>&nbsp;import java.util.List;
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;public class BudgetActivity extends AppCompatActivity</b>
+<i>29</i>&nbsp;{
+<i>30</i>&nbsp;    private final static String TAG = &quot;BudgetWatch&quot;;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private DBHelper _db;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    @Override
+<i>35</i>&nbsp;    protected void onCreate(Bundle savedInstanceState)
+<i>36</i>&nbsp;    {
+<b class="fc"><i>37</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="fc"><i>38</i>&nbsp;        setContentView(R.layout.budget_activity);</b>
+<b class="fc"><i>39</i>&nbsp;        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);</b>
+<b class="fc"><i>40</i>&nbsp;        setSupportActionBar(toolbar);</b>
+<b class="fc"><i>41</i>&nbsp;        ActionBar actionBar = getSupportActionBar();</b>
+<b class="fc"><i>42</i>&nbsp;        if(actionBar != null)</b>
+<i>43</i>&nbsp;        {
+<b class="fc"><i>44</i>&nbsp;            actionBar.setDisplayHomeAsUpEnabled(true);</b>
+<i>45</i>&nbsp;        }
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;        _db = new DBHelper(this);</b>
+<b class="fc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    @Override
+<i>51</i>&nbsp;    public void onResume()
+<i>52</i>&nbsp;    {
+<b class="fc"><i>53</i>&nbsp;        super.onResume();</b>
+<i>54</i>&nbsp;
+<b class="fc"><i>55</i>&nbsp;        final ListView budgetList = (ListView) findViewById(R.id.list);</b>
+<b class="fc"><i>56</i>&nbsp;        final TextView helpText = (TextView)findViewById(R.id.helpText);</b>
+<i>57</i>&nbsp;
+<b class="fc"><i>58</i>&nbsp;        if(_db.getBudgetCount() &gt; 0)</b>
+<i>59</i>&nbsp;        {
+<b class="fc"><i>60</i>&nbsp;            budgetList.setVisibility(View.VISIBLE);</b>
+<b class="fc"><i>61</i>&nbsp;            helpText.setVisibility(View.GONE);</b>
+<i>62</i>&nbsp;        }
+<i>63</i>&nbsp;        else
+<i>64</i>&nbsp;        {
+<b class="fc"><i>65</i>&nbsp;            budgetList.setVisibility(View.GONE);</b>
+<b class="fc"><i>66</i>&nbsp;            helpText.setVisibility(View.VISIBLE);</b>
+<b class="fc"><i>67</i>&nbsp;            helpText.setText(R.string.noBudgets);</b>
+<i>68</i>&nbsp;        }
+<i>69</i>&nbsp;
+<b class="fc"><i>70</i>&nbsp;        final Calendar date = Calendar.getInstance();</b>
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;        // Set to the last ms at the end of the month
+<b class="fc"><i>73</i>&nbsp;        final long dateMonthEndMs = CalendarUtil.getEndOfMonthMs(date.get(Calendar.YEAR),</b>
+<b class="fc"><i>74</i>&nbsp;                date.get(Calendar.MONTH));</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;        // Set to beginning of the month
+<b class="fc"><i>77</i>&nbsp;        final long dateMonthStartMs = CalendarUtil.getStartOfMonthMs(date.get(Calendar.YEAR),</b>
+<b class="fc"><i>78</i>&nbsp;                date.get(Calendar.MONTH));</b>
+<i>79</i>&nbsp;
+<b class="fc"><i>80</i>&nbsp;        final Bundle b = getIntent().getExtras();</b>
+<b class="fc"><i>81</i>&nbsp;        final long budgetStartMs = b != null ? b.getLong(&quot;budgetStart&quot;, dateMonthStartMs) : dateMonthStartMs;</b>
+<b class="fc"><i>82</i>&nbsp;        final long budgetEndMs = b != null ? b.getLong(&quot;budgetEnd&quot;, dateMonthEndMs) : dateMonthEndMs;</b>
+<i>83</i>&nbsp;
+<b class="fc"><i>84</i>&nbsp;        date.setTimeInMillis(budgetStartMs);</b>
+<b class="fc"><i>85</i>&nbsp;        String budgetStartString = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime());</b>
+<i>86</i>&nbsp;
+<b class="fc"><i>87</i>&nbsp;        date.setTimeInMillis(budgetEndMs);</b>
+<b class="fc"><i>88</i>&nbsp;        String budgetEndString = DateFormat.getDateInstance(DateFormat.SHORT).format(date.getTime());</b>
+<i>89</i>&nbsp;
+<b class="fc"><i>90</i>&nbsp;        String dateRangeFormat = getResources().getString(R.string.dateRangeFormat);</b>
+<b class="fc"><i>91</i>&nbsp;        String dateRangeString = String.format(dateRangeFormat, budgetStartString, budgetEndString);</b>
+<i>92</i>&nbsp;
+<b class="fc"><i>93</i>&nbsp;        final TextView dateRangeField = (TextView) findViewById(R.id.dateRange);</b>
+<b class="fc"><i>94</i>&nbsp;        dateRangeField.setText(dateRangeString);</b>
+<i>95</i>&nbsp;
+<b class="fc"><i>96</i>&nbsp;        final List&lt;Budget&gt; budgets = _db.getBudgets(budgetStartMs, budgetEndMs);</b>
+<b class="fc"><i>97</i>&nbsp;        final BudgetAdapter budgetListAdapter = new BudgetAdapter(this, budgets);</b>
+<b class="fc"><i>98</i>&nbsp;        budgetList.setAdapter(budgetListAdapter);</b>
+<i>99</i>&nbsp;
+<b class="fc"><i>100</i>&nbsp;        registerForContextMenu(budgetList);</b>
+<i>101</i>&nbsp;
+<b class="fc"><i>102</i>&nbsp;        budgetList.setOnItemClickListener(new AdapterView.OnItemClickListener()</b>
+<b class="fc"><i>103</i>&nbsp;        {</b>
+<i>104</i>&nbsp;            @Override
+<i>105</i>&nbsp;            public void onItemClick(AdapterView&lt;?&gt; parent, View view, int position, long id)
+<i>106</i>&nbsp;            {
+<b class="fc"><i>107</i>&nbsp;                Budget budget = (Budget)parent.getItemAtPosition(position);</b>
+<b class="fc"><i>108</i>&nbsp;                if(budget == null)</b>
+<i>109</i>&nbsp;                {
+<b class="nc"><i>110</i>&nbsp;                    Log.w(TAG, &quot;Clicked budget at position &quot; + position + &quot; is null&quot;);</b>
+<b class="nc"><i>111</i>&nbsp;                    return;</b>
+<i>112</i>&nbsp;                }
+<i>113</i>&nbsp;
+<b class="fc"><i>114</i>&nbsp;                Intent i = new Intent(getApplicationContext(), TransactionActivity.class);</b>
+<b class="fc"><i>115</i>&nbsp;                Bundle bundle = new Bundle();</b>
+<b class="fc"><i>116</i>&nbsp;                bundle.putString(&quot;budget&quot;, budget.name);</b>
+<b class="fc"><i>117</i>&nbsp;                i.putExtras(bundle);</b>
+<b class="fc"><i>118</i>&nbsp;                startActivity(i);</b>
+<b class="fc"><i>119</i>&nbsp;            }</b>
+<i>120</i>&nbsp;        });
+<i>121</i>&nbsp;
+<b class="fc"><i>122</i>&nbsp;        setupTotalEntry(budgets);</b>
+<b class="fc"><i>123</i>&nbsp;    }</b>
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    private void setupTotalEntry(final List&lt;Budget&gt; budgets)
+<i>126</i>&nbsp;    {
+<b class="fc"><i>127</i>&nbsp;        final TextView budgetName = (TextView)findViewById(R.id.budgetName);</b>
+<b class="fc"><i>128</i>&nbsp;        final TextView budgetValue = (TextView)findViewById(R.id.budgetValue);</b>
+<b class="fc"><i>129</i>&nbsp;        final ProgressBar budgetBar = (ProgressBar)findViewById(R.id.budgetBar);</b>
+<i>130</i>&nbsp;
+<b class="fc"><i>131</i>&nbsp;        budgetName.setText(R.string.totalBudgetTitle);</b>
+<i>132</i>&nbsp;
+<b class="fc"><i>133</i>&nbsp;        int max = 0;</b>
+<b class="fc"><i>134</i>&nbsp;        int current = 0;</b>
+<i>135</i>&nbsp;
+<b class="fc"><i>136</i>&nbsp;        for(Budget budget : budgets)</b>
+<i>137</i>&nbsp;        {
+<b class="fc"><i>138</i>&nbsp;            max += budget.max;</b>
+<b class="fc"><i>139</i>&nbsp;            current += budget.current;</b>
+<b class="fc"><i>140</i>&nbsp;        }</b>
+<i>141</i>&nbsp;
+<b class="fc"><i>142</i>&nbsp;        budgetBar.setMax(max);</b>
+<b class="fc"><i>143</i>&nbsp;        budgetBar.setProgress(current);</b>
+<i>144</i>&nbsp;
+<b class="fc"><i>145</i>&nbsp;        String fraction = String.format(getResources().getString(R.string.fraction), current, max);</b>
+<b class="fc"><i>146</i>&nbsp;        budgetValue.setText(fraction);</b>
+<b class="fc"><i>147</i>&nbsp;    }</b>
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;    @Override
+<i>150</i>&nbsp;    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
+<i>151</i>&nbsp;    {
+<b class="nc"><i>152</i>&nbsp;        super.onCreateContextMenu(menu, v, menuInfo);</b>
+<b class="nc"><i>153</i>&nbsp;        if (v.getId()==R.id.list)</b>
+<i>154</i>&nbsp;        {
+<b class="nc"><i>155</i>&nbsp;            MenuInflater inflater = getMenuInflater();</b>
+<b class="nc"><i>156</i>&nbsp;            inflater.inflate(R.menu.edit_menu, menu);</b>
+<i>157</i>&nbsp;        }
+<b class="nc"><i>158</i>&nbsp;    }</b>
+<i>159</i>&nbsp;
+<i>160</i>&nbsp;    @Override
+<i>161</i>&nbsp;    public boolean onContextItemSelected(MenuItem item)
+<i>162</i>&nbsp;    {
+<b class="nc"><i>163</i>&nbsp;        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();</b>
+<b class="nc"><i>164</i>&nbsp;        ListView listView = (ListView) findViewById(R.id.list);</b>
+<i>165</i>&nbsp;
+<b class="nc"><i>166</i>&nbsp;        if(info != null)</b>
+<i>167</i>&nbsp;        {
+<b class="nc"><i>168</i>&nbsp;            Budget budget = (Budget) listView.getItemAtPosition(info.position);</b>
+<i>169</i>&nbsp;
+<b class="nc"><i>170</i>&nbsp;            if (budget != null &amp;&amp; item.getItemId() == R.id.action_edit)</b>
+<i>171</i>&nbsp;            {
+<b class="nc"><i>172</i>&nbsp;                Intent i = new Intent(getApplicationContext(), BudgetViewActivity.class);</b>
+<b class="nc"><i>173</i>&nbsp;                Bundle bundle = new Bundle();</b>
+<b class="nc"><i>174</i>&nbsp;                bundle.putString(&quot;id&quot;, budget.name);</b>
+<b class="nc"><i>175</i>&nbsp;                bundle.putBoolean(&quot;view&quot;, true);</b>
+<b class="nc"><i>176</i>&nbsp;                i.putExtras(bundle);</b>
+<b class="nc"><i>177</i>&nbsp;                startActivity(i);</b>
+<i>178</i>&nbsp;
+<b class="nc"><i>179</i>&nbsp;                return true;</b>
+<i>180</i>&nbsp;            }
+<i>181</i>&nbsp;        }
+<i>182</i>&nbsp;
+<b class="nc"><i>183</i>&nbsp;        return super.onContextItemSelected(item);</b>
+<i>184</i>&nbsp;    }
+<i>185</i>&nbsp;
+<i>186</i>&nbsp;    @Override
+<i>187</i>&nbsp;    public boolean onCreateOptionsMenu(Menu menu)
+<i>188</i>&nbsp;    {
+<i>189</i>&nbsp;        // Inflate the menu; this adds items to the action bar if it is present.
+<b class="fc"><i>190</i>&nbsp;        getMenuInflater().inflate(R.menu.budget_menu, menu);</b>
+<b class="fc"><i>191</i>&nbsp;        return super.onCreateOptionsMenu(menu);</b>
+<i>192</i>&nbsp;    }
+<i>193</i>&nbsp;
+<i>194</i>&nbsp;    @Override
+<i>195</i>&nbsp;    public boolean onOptionsItemSelected(MenuItem item)
+<i>196</i>&nbsp;    {
+<b class="fc"><i>197</i>&nbsp;        int id = item.getItemId();</b>
+<i>198</i>&nbsp;
+<b class="fc"><i>199</i>&nbsp;        if (id == R.id.action_add)</b>
+<i>200</i>&nbsp;        {
+<b class="fc"><i>201</i>&nbsp;            Intent i = new Intent(getApplicationContext(), BudgetViewActivity.class);</b>
+<b class="fc"><i>202</i>&nbsp;            startActivity(i);</b>
+<b class="fc"><i>203</i>&nbsp;            return true;</b>
+<i>204</i>&nbsp;        }
+<i>205</i>&nbsp;
+<b class="fc"><i>206</i>&nbsp;        if(id == R.id.action_calendar)</b>
+<i>207</i>&nbsp;        {
+<b class="nc"><i>208</i>&nbsp;            AlertDialog.Builder builder = new AlertDialog.Builder(this);</b>
+<b class="nc"><i>209</i>&nbsp;            builder.setTitle(R.string.budgetDateRangeHelp);</b>
+<i>210</i>&nbsp;
+<b class="nc"><i>211</i>&nbsp;            final View view = getLayoutInflater().inflate(R.layout.budget_date_picker_layout, null, false);</b>
+<i>212</i>&nbsp;
+<b class="nc"><i>213</i>&nbsp;            builder.setView(view);</b>
+<b class="nc"><i>214</i>&nbsp;            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener()</b>
+<b class="nc"><i>215</i>&nbsp;            {</b>
+<i>216</i>&nbsp;                @Override
+<i>217</i>&nbsp;                public void onClick(DialogInterface dialog, int which)
+<i>218</i>&nbsp;                {
+<b class="nc"><i>219</i>&nbsp;                    dialog.cancel();</b>
+<i>220</i>&nbsp;                }
+<i>221</i>&nbsp;            });
+<b class="nc"><i>222</i>&nbsp;            builder.setPositiveButton(R.string.set, new DialogInterface.OnClickListener()</b>
+<b class="nc"><i>223</i>&nbsp;            {</b>
+<i>224</i>&nbsp;                @Override
+<i>225</i>&nbsp;                public void onClick(DialogInterface dialog, int which)
+<i>226</i>&nbsp;                {
+<b class="nc"><i>227</i>&nbsp;                    DatePicker startDatePicker = (DatePicker) view.findViewById(R.id.startDate);</b>
+<b class="nc"><i>228</i>&nbsp;                    DatePicker endDatePicker = (DatePicker) view.findViewById(R.id.endDate);</b>
+<i>229</i>&nbsp;
+<b class="nc"><i>230</i>&nbsp;                    long startOfBudgetMs = CalendarUtil.getStartOfDayMs(startDatePicker.getYear(),</b>
+<b class="nc"><i>231</i>&nbsp;                            startDatePicker.getMonth(), startDatePicker.getDayOfMonth());</b>
+<b class="nc"><i>232</i>&nbsp;                    long endOfBudgetMs = CalendarUtil.getEndOfDayMs(endDatePicker.getYear(),</b>
+<b class="nc"><i>233</i>&nbsp;                            endDatePicker.getMonth(), endDatePicker.getDayOfMonth());</b>
+<i>234</i>&nbsp;
+<b class="nc"><i>235</i>&nbsp;                    if (startOfBudgetMs &gt; endOfBudgetMs)</b>
+<i>236</i>&nbsp;                    {
+<b class="nc"><i>237</i>&nbsp;                        Toast.makeText(BudgetActivity.this, R.string.startDateAfterEndDate, Toast.LENGTH_LONG).show();</b>
+<i>238</i>&nbsp;                        return;
+<i>239</i>&nbsp;                    }
+<i>240</i>&nbsp;
+<b class="nc"><i>241</i>&nbsp;                    Intent intent = new Intent(BudgetActivity.this, BudgetActivity.class);</b>
+<b class="nc"><i>242</i>&nbsp;                    intent.setFlags(</b>
+<i>243</i>&nbsp;                            Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
+<i>244</i>&nbsp;
+<b class="nc"><i>245</i>&nbsp;                    Bundle bundle = new Bundle();</b>
+<b class="nc"><i>246</i>&nbsp;                    bundle.putLong(&quot;budgetStart&quot;, startOfBudgetMs);</b>
+<b class="nc"><i>247</i>&nbsp;                    bundle.putLong(&quot;budgetEnd&quot;, endOfBudgetMs);</b>
+<b class="nc"><i>248</i>&nbsp;                    intent.putExtras(bundle);</b>
+<b class="nc"><i>249</i>&nbsp;                    startActivity(intent);</b>
+<i>250</i>&nbsp;
+<b class="nc"><i>251</i>&nbsp;                    BudgetActivity.this.finish();</b>
+<i>252</i>&nbsp;                }
+<i>253</i>&nbsp;            });
+<i>254</i>&nbsp;
+<b class="nc"><i>255</i>&nbsp;            builder.show();</b>
+<b class="nc"><i>256</i>&nbsp;            return true;</b>
+<i>257</i>&nbsp;        }
+<i>258</i>&nbsp;
+<b class="fc"><i>259</i>&nbsp;        if(id == android.R.id.home)</b>
+<i>260</i>&nbsp;        {
+<b class="fc"><i>261</i>&nbsp;            finish();</b>
+<b class="fc"><i>262</i>&nbsp;            return true;</b>
+<i>263</i>&nbsp;        }
+<i>264</i>&nbsp;
+<b class="nc"><i>265</i>&nbsp;        return super.onOptionsItemSelected(item);</b>
+<i>266</i>&nbsp;    }
+<i>267</i>&nbsp;
+<i>268</i>&nbsp;    @Override
+<i>269</i>&nbsp;    protected void onDestroy()
+<i>270</i>&nbsp;    {
+<b class="nc"><i>271</i>&nbsp;        _db.close();</b>
+<b class="nc"><i>272</i>&nbsp;        super.onDestroy();</b>
+<b class="nc"><i>273</i>&nbsp;    }</b>
+<i>274</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-04-05 23:04</div>
+</div>
+</body>
+</html>
