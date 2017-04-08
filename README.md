@@ -1,49 +1,40 @@
-# Budget Watch
+# Forecastie
 
-[![Build Status](https://travis-ci.org/brarcher/budget-watch.svg?branch=master)](https://travis-ci.org/brarcher/budget-watch)
+[![Release](https://img.shields.io/github/release/martykan/forecastie.svg)](https://github.com/martykan/forecastie/releases)
+[![Circle CI](https://circleci.com/gh/martykan/forecastie/tree/master.svg?style=svg)](https://circleci.com/gh/martykan/forecastie/tree/master)
 
-<a href="https://f-droid.org/repository/browse/?fdid=protect.budgetwatch" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
-<a href="https://play.google.com/store/apps/details?id=protect.budgetwatch.play" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="90"/></a>
+A simple, opensource weather app for Android. It gathers data from [OpenWeatherMap](http://openweathermap.org/), via their public API.
 
-Budget Watch helps manage personal budgets. After adding your budgets, simply record your day-to-day transactions.
-You can then view how close your sending is to your budget.
+[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Get_it_on_F-Droid.svg/200px-Get_it_on_F-Droid.svg.png" style="float: left; padding-right: 10px;">](https://f-droid.org/repository/browse/?fdid=cz.martykan.forecastie)
+[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Get_it_on_Google_play.svg/500px-Get_it_on_Google_play.svg.png" style="float: left; padding-right: 10px;" height="70">](https://play.google.com/store/apps/details?id=com.casticalabs.forecastie)
 
-If there is any interest in improving this project, kindly submit a pull request with
-proposed changes.
+## Features
+* Simple design
+* Detailed 5 day forecast
+* Multiple units
+* Works with any city in the world
+* Offline functionality
 
-# Screenshots
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23584126/9f3b6e3e-0125-11e7-8c0a-27d176dd0c00.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23584126/9f3b6e3e-0125-11e7-8c0a-27d176dd0c00.png)
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23584129/b21da058-0125-11e7-952a-3f8202fe70b4.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23584129/b21da058-0125-11e7-952a-3f8202fe70b4.png)
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23584136/ec4ebe42-0125-11e7-8a27-c12309bdffe9.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23584136/ec4ebe42-0125-11e7-8a27-c12309bdffe9.png)
+## Screenshots
+[<img src="http://i.imgur.com/bvcc7Lt.png" width=250>](http://i.imgur.com/bvcc7Lt.png)
+[<img src="http://i.imgur.com/SaH5X2O.png" width=250>](http://i.imgur.com/SaH5X2O.png)
+[<img src="http://i.imgur.com/ztMbvyY.png" width=250>](http://i.imgur.com/ztMbvyY.png)
 
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23584137/ed87297a-0125-11e7-8d76-38b77a2938da.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23584137/ed87297a-0125-11e7-8d76-38b77a2938da.png)
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23929601/ab0484be-08fd-11e7-9ffa-b003d72605f6.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23929601/ab0484be-08fd-11e7-9ffa-b003d72605f6.png)
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23584139/f12ae6ca-0125-11e7-855e-aaf44bd36873.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23584139/f12ae6ca-0125-11e7-855e-aaf44bd36873.png)
+## Contribution
+If you have any ideas or issues, don't hesitate to reach out to me. Every contribution is welcome.
 
-[<img src="https://cloud.githubusercontent.com/assets/5264535/23584140/f2b7acf8-0125-11e7-8aea-62e49e1e9cf4.png" width=250>](https://cloud.githubusercontent.com/assets/5264535/23584140/f2b7acf8-0125-11e7-8aea-62e49e1e9cf4.png)
+## Translators
+If you want to translate you can easily do so on [Transifex](https://www.transifex.com/forecastie/forecastie). I would also recommend joining the [translator mailing list](http://eepurl.com/cbD2BP). You will get notified a few days before a new version comes, so the translations can be done when it's released.
 
-# Building
+## License
+[![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
 
-To build, use the gradle wrapper scripts provided in the top level directory of the project. The following will
-compile the application and run all unit tests:
+This application is Free Software: You can use, study share and improve it at your
+will. Specifically you can redistribute and/or modify it under the terms of the
+[GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
+published by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-GNU/Linux, OSX, UNIX:
-```
-./gradlew build
-```
+The weather data is provided by [OpenWeatherMap](http://openweathermap.org/), under the <a href='http://creativecommons.org/licenses/by-sa/2.0/'>Creative Commons license</a>.
 
-Windows:
-```
-./gradlew.bat build
-```
-
-# Thanks
-
-App icons from [The Noun Project](https://thenounproject.com) and
-[Icons8](https://icons8.com), specifically:
-- [Purse](https://thenounproject.com/term/purse/26896/) by
-[Dima Lagunov](https://thenounproject.com/lagunov.dmitriy/)
-- [Ticket Bill](https://thenounproject.com/term/ticket-bill/634398/)
-by [naim](https://thenounproject.com/naim.solis/)
+Icons are <a href='https://erikflowers.github.io/weather-icons/'>Weather Icons</a>, by <a href='http://www.twitter.com/artill'>Lukas Bischoff</a> and <a href='http://www.twitter.com/Erik_UX'>Erik Flowers</a>, under the <a href='http://scripts.sil.org/OFL'>SIL OFL 1.1</a> license.

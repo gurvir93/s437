@@ -1,137 +1,101 @@
-<resources
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
+    <string name="app_name">Forecastie</string>
 
-    <string name="app_name">Budget Watch</string>
-    <string name="icon">Icon</string>
-    <string name="budgetsTitle">Budgets</string>
-    <string name="addBudgetTitle">Budget hinzufügen</string>
-    <string name="viewBudgetTitle">Budget ansehen</string>
-    <string name="editBudgetTitle">Budget bearbeiten</string>
-    <string name="budgetDescription">Budgets erstellen und verwalten</string>
-    <string name="transactionsTitle">Transaktionen</string>
-    <string name="transactionsDescription">Transaktionen und Einnahmen</string>
-    <string name="addExpenseTransactionTitle">Ausgabe hinzufügen</string>
-    <string name="editExpenseTransactionTitle">Ausgabe bearbeiten</string>
-    <string name="viewExpenseTransactionTitle">Ausgabe ansehen</string>
-    <string name="addRevenueTransactionTitle">Einnahme hinzufügen</string>
-    <string name="editRevenueTransactionTitle">Einnahme bearbeiten</string>
-    <string name="viewRevenueTransactionTitle">Einnahme ansehen</string>
-    <string name="importExportTitle">Import/Export</string>
+    <string name="action_search">Suche</string>
+    <string name="action_refresh">Aktualisieren</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_about">Über die App</string>
 
-    <string name="add">Hinzufügen</string>
-    <string name="selectDates">Daten auswählen</string>
-    <string name="type">Typ</string>
-    <string name="value">Wert</string>
-    <string name="name">Name</string>
-    <string name="budget">Budget</string>
-    <string name="account">Konto</string>
-    <string name="note">Notiz</string>
-    <string name="date">Datum</string>
-    <string name="save">Speichern</string>
-    <string name="cancel">Abbrechen</string>
-    <string name="set">Einrichten</string>
-    <string name="receipt">Quittung</string>
-    <string name="capture">Erfassung</string>
-    <string name="view">Ansicht</string>
-    <string name="update">Update</string>
-    <string name="clean">Löschen</string>
-    <string name="ok">OK</string>
+    <string name="wind">Wind</string>
+    <string name="pressure">Luftdruck</string>
+    <string name="humidity">Feuchtigkeit</string>
 
-    <string name="Grocery">Lebensmittel</string>
-    <string name="one_hundred">100</string>
-    <string name="fraction">%1$d/%2$d</string>
+    <string name="search_title">Stadt suchen</string>
 
-    <string name="budgetTypeMissing">Budgettyp ist leer</string>
-    <string name="budgetValueMissing">Budgetwert ist leer</string>
+    <string name="setting_speedUnits">Maßeinheit Geschwindigkeit</string>
+    <string name="setting_tempUnits">Maßeinheit Temperatur</string>
+    <string name="setting_pressureUnits">Maßeinheit Druck</string>
+    <string name="later">Später</string>
+    <string name="setting_refreshInterval">Aktualisierungs-Interval im Hintergrund</string>
+    <string name="today">Heute</string>
+    <string name="tomorrow">Morgen</string>
+    <string name="dialog_cancel">Abbrechen</string>
+    <string name="dialog_ok">OK</string>
+    <string name="downloading_data">Lade Daten herunter...</string>
+    <string name="error_dateFormat">FEHLERHAFTES DATUMSFORMAT</string>
+    <string name="setting_auto_detect_location">Erkenne Ort</string>
+    <string name="setting_dateFormat">Datumsformat</string>
+    <string name="setting_dateFormatCustom">Eigenes Datumsformat</string>
+    <string name="setting_dateFormatCustom_summary">Eigene Zeichenkette für SimpleDateFormat bereitstellen</string>
+    <string name="setting_differentiateDaysByTint">Farbliche Unterscheidung der Tage</string>
+    <string name="setting_unit_kph">Kilometer pro Stunde (km/h)</string>
+    <string name="setting_unit_mph">Meilen pro Stunde (mph)</string>
+    <string name="setting_unit_mps">Meter pro Sekunde (m/s)</string>
+    <string name="settings_none">Keins</string>
+    <string name="getting_location">Erkenne Ort...</string>
+    <string name="msg_city_not_found">Stadt konnte nicht gefunden werden.</string>
+    <string name="msg_connection_not_available">Keine Verbindung</string>
+    <string name="msg_connection_problem">Es gibt ein Problem mit der Internetverbindung.</string>
+    <string name="msg_err_parsing_json">Fehler beim Parsen der JSON</string>
+    <string name="pressure_unit_hpa">hPa</string>
+    <string name="pressure_unit_kpa">kPa</string>
+    <string name="pressure_unit_mmhg">mmHg</string>
+    <string name="setting_apiKey">API-Schlüssel</string>
+    <string name="setting_apiKey_summary">Eigener API-Schlüssel für Anfragen an OpenWeatherMap</string>
+    <string name="setting_unit_Celsuis">Celsius</string>
+    <string name="setting_unit_Fahrenheit">Fahrenheit</string>
+    <string name="setting_unit_Kelvin">Kelvin</string>
+    <string name="setting_unit_hpa">hPa</string>
+    <string name="setting_unit_kpa">kPa</string>
+    <string name="setting_unit_mmhg">mmHg</string>
+    <string name="speed_unit_kph">km/h</string>
+    <string name="speed_unit_mph">mph</string>
+    <string name="speed_unit_mps">m/s</string>
+    <string name="setting_wind_direction_format">Windrichtungsformat</string>
+    <string name="wind_direction_east">O</string>
+    <string name="wind_direction_east_north_east">ONO</string>
+    <string name="wind_direction_east_south_east">OSO</string>
+    <string name="wind_direction_format_abbreviations">Abkürzungen</string>
+    <string name="wind_direction_format_arrows">Pfeile</string>
+    <string name="wind_direction_format_none">Keine Angabe</string>
+    <string name="wind_direction_north">N</string>
+    <string name="wind_direction_north_east">NO</string>
+    <string name="wind_direction_north_north_east">NNO</string>
+    <string name="wind_direction_north_north_west">NNW</string>
+    <string name="wind_direction_north_west">NW</string>
+    <string name="wind_direction_south">S</string>
+    <string name="wind_direction_south_east">SO</string>
+    <string name="wind_direction_south_south_east">SSO</string>
+    <string name="wind_direction_south_south_west">SSW</string>
+    <string name="wind_direction_south_west">SW</string>
+    <string name="wind_direction_west">W</string>
+    <string name="wind_direction_west_north_west">WNW</string>
+    <string name="wind_direction_west_south_west">WSW</string>
 
-    <string name="expensesTitle">Ausgaben</string>
-    <string name="revenuesTitle">Einnahmen</string>
-
-    <string name="edit">Bearbeiten</string>
-    <string name="delete">Löschen</string>
-
-    <!-- A date range, where both arguments are date strings -->
-    <string name="dateRangeFormat">%1$s ~ %2$s</string>
-
-    <string name="noBudgets">Sie haben derzeit keine Budgets. Drücken Sie den "+" (Plus) Knopf, um anzufangen.\n\nBudget Watch lässt Sie Budgets erstellen und dann die monatlichen Ausgaben verfolgen.</string>
-    <string name="noExpenses">Sie haben derzeit keine Ausgabentransaktionen. Drücken Sie den "+" (Plus) Knopf, um anzufangen.</string>
-    <string name="noRevenues">Sie haben derzeit keine Einnahmentransaktionen. Drücken Sie den "+" (Plus) Knopf, um anzufangen.</string>
-
-    <string name="budgetDateRangeHelp">Wählen Sie einen Datumsbereich, um Budgets anzeigen zu lassen</string>
-    <string name="startDate">Startdatum</string>
-    <string name="endDate">Enddatum</string>
-    <string name="startDateAfterEndDate">Das Startdatum muss vor dem Enddatum liegen oder identisch sein.</string>
-
-    <string name="cleanupHelp">Datum wählen. Alle Quittungen bis zu diesem Datum werden gelöscht.</string>
-
-    <string name="importExport">Import/Export</string>
-    <string name="exportName">Export</string>
-    <string name="importedFrom">Importiert von: %1$s</string>
-    <string name="exportedTo">Exportiert nach: %1$s</string>
-    <string name="importFailed">Import fehlgeschlagen: %1$s</string>
-    <string name="exportFailed">Export fehlgeschlagen: %1$s</string>
-    <string name="importing">Importiere&#8230;</string>
-    <string name="exporting">Exportiere&#8230;</string>
-
-    <string name="purgeOldReceipts">Lösche alte Quittungen</string>
-    <string name="cleaning">Lösche&#8230;</string>
-
-    <string name="loading">Lade&#8230;</string>
-
-    <string name="pictureCaptureError">Bild konnte nicht mit der Kamera aufgenommen werden</string>
-    <string name="noCameraPermissionError">Die App muss eine Berechtigung für Kamerazugriff erhalten, um Quittungen fotografieren zu können</string>
-
-    <string name="iconDescription">BudgetWatch Icon</string>
-    <string name="addExpenseDescription">Eine Ausgabentransaktion hinzufügen</string>
-    <string name="budgetMissing">Kein Budget ausgewählt</string>
-    <string name="dateInvalid">Datum ist ungültig</string>
-    <string name="valueInvalid">Wert ist ungültig</string>
-    <string name="valueMissing">Wert ist leer</string>
-    <string name="noExpensesForBudget">Sie haben keine Ausgabentransaktionen im Budget \"%1$s\"</string>
-    <string name="noRevenuesForBudget">Sie haben keine Einkommenstransaktionen im Budget \"%1$s\"</string>
-
-    <string name="about">Über</string>
-    <string name="app_copyright_fmt">Copyright 2016-<xliff:g>%d</xliff:g> Branden Archer</string>
-    <string name="app_license">Lizenziert unter der GPLv3.</string>
-    <string name="about_title_fmt">Über <xliff:g id="app_name">%s</xliff:g></string>
-    <string name="debug_version_fmt">Version: <xliff:g id="version">%s</xliff:g></string>
-    <string name="app_revision_fmt">Release-Informationen: <xliff:g id="app_revision_url">%s</xliff:g></string>
-    <string name="app_libraries"><xliff:g id="app_name">%s</xliff:g> benutzt die folgenden Dritt-Anbieter-Bibliotheken: <xliff:g id="app_libraries_list">%s</xliff:g></string>
-    <!-- needs translated --> <string name="app_resources"><xliff:g id="app_name">%s</xliff:g> uses the following third-party resources: <xliff:g id="app_resources_list">%s</xliff:g></string>
-    <string name="share">Teilen</string>
-    <string name="totalBudgetTitle">Gesamt</string>
-    <string name="settings">Einstellungen</string>
-    <string name="receiptQuality">Quittungsqualität</string>
-    <string name="receiptQualitySummary">Wählen Sie die JPEG-Qualität für die Quittungsaufnahmen</string>
-    <string name="encodingReceipt">Quittung verschlüsseln</string>
-    <string name="confirm">Bestätigen</string>
-    <string name="deleteBudgetTitle">Budget entfernen</string>
-    <string name="deleteBudgetConfirmation">Bitte bestätigen Sie die Löschung dieses Budgets. Alle Transaktionen, die mit diesem Budget verbunden sind, bleiben bestehen.</string>
-    <string name="deleteTransactionTitle">Transaktion entfernen</string>
-    <string name="deleteTransactionConfirmation">Bitte bestätigen Sie die Löschung dieser Transaktion.</string>
-    <string name="fileFormat">Dateiformat</string>
-
-    <string name="importExportHelp">Backup-Daten ermöglichen es Ihnen, Ihre Budgets und Transaktionen auf ein anderes Gerät zu verschieben.</string>
-    <string name="importSuccessfulTitle">Import erfolgreich</string>
-    <string name="importFailedTitle">Import fehlgeschlagen</string>
-    <string name="exportSuccessfulTitle">Export erfolgreich</string>
-    <string name="exportFailedTitle">Export fehlgeschlagen</string>
-    <string name="noExternalStoragePermissionError">Importieren/Exportieren ist nicht möglich, da die App keine Berechtigung für den Speicher hat</string>
-    <string name="exportOptionExplanation">Daten werden in das Hauptverzeichnis des externen Speichers geschrieben.</string>
-    <string name="importOptionFilesystemTitle">Import von Dateisystem</string>
-    <string name="importOptionFilesystemExplanation">Wählen Sie eine bestimmte Datei aus dem Dateisystem.</string>
-    <string name="importOptionFilesystemButton">Aus Dateisystem</string>
-    <string name="importOptionApplicationTitle">Import aus Dateisystem</string>
-    <string name="importOptionApplicationExplanation">Verwenden Sie eine externe Anwendung wie Dropbox, Google Drive, oder Ihren bevorzugten Dateimanager, um eine Datei zu öffnen.</string>
-    <string name="importOptionApplicationButton">Verwende externe Anwendung</string>
-    <string name="importOptionFixedTitle">Importiere vom Exportort</string>
-    <string name="importOptionFixedExplanation">Importiere von dem gleichen Ort im Dateisystem, wo auch die exportierten Dateien abgelegt werden.</string>
-    <string name="importOptionFixedButton">Verwende Exportort</string>
-    <string name="sendLabel">Senden&#8230;</string>
-
-    <string name="search">Suchen</string>
-    <string name="searchHint">Suchen&#8230;</string>
-    <string name="searchEmptyExpenses">Keine übereinstimmenden Ausgabentransaktionen.</string>
-    <string name="searchEmptyRevenues">Keine übereinstimmenden Einahmentransaktionen.</string>
+    <!-- 1: temperature; 2: unit -->
+    <string name="dash_clock_status">%1$s%2$s</string>
+    <!-- 1: temperature; 2: unit; 3: weather description -->
+    <string name="dash_clock_expanded_title">%1$s%2$s - %3$s</string>
+    <!-- 1: city; 2: country; 3: wind; 4: speed units; 5: pressure; 6: pressure units; 7: humidity -->
+    <string name="dash_clock_expanded_body">%1$s, %2$s\nWind: %3$s %4$s\nLuftdruck: %5$s %6$s\nFeuchtigkeit: %7$s %%\n</string>
+    <string name="sunrise">Sonnenaufgang</string>
+    <string name="sunset">Sonnenuntergang</string>
+    <string name="setting_unit_mm">Millimeter (mm)</string>
+    <string name="setting_unit_in">Zoll (in)</string>
+    <string name="setting_lengthUnits">Maßeinheit Länge</string>
+    <string name="last_update">Zuletzt aktualisiert:\n%s</string>
+    <string name="last_update_widget">\nZuletzt aktualisiert: %s</string>
+    <string name="msg_too_many_requests">Zu viele Anfragen. Bitte erneut versuchen.</string>
+    <string name="setting_displayDecimalZeroes">Zeige Null nach Komma</string>
+    <string name="setting_theme">Design</string>
+    <string name="setting_theme_classic">Klassisch</string>
+    <string name="setting_theme_dark">Frisch Dunkel</string>
+    <string name="setting_theme_fresh">Frisch</string>
+    <string name="setting_theme_classic_dark">Klassisch Dunkel</string>
+    <string name="settings_title_data">Daten</string>
+    <string name="settings_title_display">Anzeige</string>
+    <string name="settings_title_units">Einheiten</string>
+    <string name="action_weather_map">Wetterkarte</string>
+    <string name="setting_unit_kn">Knoten (kn)</string>
+    <string name="speed_unit_kn">kn</string>
 </resources>
-
