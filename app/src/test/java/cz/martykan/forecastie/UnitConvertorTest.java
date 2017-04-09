@@ -37,8 +37,8 @@ public class UnitConvertorTest{
     }
 
     @Test
-    public void test(){
-        when(context.getSharedPreferences(anyString(), anyInt())).thenReturn(sharedPrefs);
-        assertEquals((300 - 273.15f), UnitConvertor.convertTemperature(300,sharedPrefs));
+    public void tempKelvinToCelsius(){
+        when(sharedPrefs.getString("unit","C")).thenReturn("°C");
+        assertEquals((300 - 273.15f), UnitConvertor.convertTemperature(300,sharedPrefs), 0.000001f);
     }
 }
