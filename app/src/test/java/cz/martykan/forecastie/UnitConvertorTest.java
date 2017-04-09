@@ -2,8 +2,8 @@ package cz.martykan.forecastie;
 
 import android.content.SharedPreferences;
 import android.content.Context;
-import android.test.InstrumentationTestCase;
-import android.test.mock.*;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 
 import org.junit.Test;
@@ -19,31 +19,26 @@ import static org.junit.Assert.*;
 
 
 
-public class UnitConvertorTest extends InstrumentationTestCase {
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
+public class UnitConvertorTest{
+    private static final String PREFS_NAME = "AOP_PREFS";
+    private SharedPreferences sharedPrefs = mock(SharedPreferences.class);
     private Context context;
-    public static final String PREFS_NAME = "AOP_PREFS";
 
     @Before
     public void setUp(){
-        context = new MockContext();
-        sp = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        editor = sp.edit();
+        sharedPrefs = mock(SharedPreferences.class);
+        context = mock(Context.class);
     }
 
     @After
     public void tearDown() {
-        editor = null;
         context = null;
-        sp = null;
+        sharedPrefs = null;
     }
 
     @Test
     public void test(){
-        editor.putString("unit", "C");
-        editor.commit();
-
-        assertEquals((300 - 273.15f), UnitConvertor.convertTemperature(300,sp));
+        when(context.getSharedPreferences(anyString(), anyInt())).thenReturn(sharedPrefs);
+        assertEquals((300 - 273.15f), UnitConvertor.convertTemperature(300,sharedPrefs));
     }
 }
