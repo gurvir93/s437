@@ -39,6 +39,22 @@ public class UnitConvertorTest{
     @Test
     public void tempKelvinToCelsius(){
         when(sharedPrefs.getString("unit","C")).thenReturn("°C");
-        assertEquals((300 - 273.15f), UnitConvertor.convertTemperature(300,sharedPrefs), 0.000001f);
+        int tempInKelvin = 300;
+        assertEquals((tempInKelvin - 273.15f), UnitConvertor.convertTemperature(tempInKelvin,sharedPrefs), 0.000001f);
+    }
+
+    @Test
+    public void tempKelvinToFahrenheit(){
+        when(sharedPrefs.getString("unit","C")).thenReturn("°F");
+        int tempInKelvin = 300;
+        float kevinTemp = (9*(tempInKelvin - 273.15f)/5) + 32;
+        assertEquals(kevinTemp, UnitConvertor.convertTemperature(tempInKelvin,sharedPrefs), 0.000001f);
+    }
+
+    @Test
+    public void noTempSpecified(){
+        when(sharedPrefs.getString("unit","C")).thenReturn("");
+        int tempInKelvin = 300;
+        assertEquals(tempInKelvin, UnitConvertor.convertTemperature(tempInKelvin,sharedPrefs), 0.000001f);
     }
 }
