@@ -5,6 +5,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         applicationId "cz.martykan.forecastie"
         minSdkVersion 15
         targetSdkVersion 23
@@ -36,6 +37,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:+"
     androidTestCompile "org.mockito:mockito-android:+"
+    androidTestCompile 'com.android.support:support-annotations:23.3.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.5.4'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:support-v4:23.1.1'
