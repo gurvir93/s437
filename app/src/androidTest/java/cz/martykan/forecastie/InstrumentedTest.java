@@ -42,7 +42,16 @@ public class InstrumentedTest extends ActivityInstrumentationTestCase2<MainActiv
 
     @Test
     public void firstActivityTest() {
-        //solo.waitForActivity(MainActivity.class, 100000);
         solo.assertCurrentActivity("Test first activity", MainActivity.class);
     }
+
+//    @Test
+//    public void localeChangeTest() throws Exception {
+//        solo.clickOnScreen(1050, 60);
+//        solo.clickOnButton(R.id.action_location);
+//        solo.wait(300);
+//        assertTrue(solo.waitForText("Mountain View, US"));
+//    }
+
+
 }

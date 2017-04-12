@@ -20,7 +20,6 @@ import static org.junit.Assert.*;
 
 
 public class UnitConvertorTest{
-    private static final String PREFS_NAME = "AOP_PREFS";
     private SharedPreferences sharedPrefs = mock(SharedPreferences.class);
     private Context context;
 

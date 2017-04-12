@@ -20,8 +20,7 @@ import static org.mockito.Mockito.mock;
  */
 
 public class WeatherTest {
-    private static final String PREFS_NAME = "AOP_PREFS";
-    private SharedPreferences sharedPrefs = mock(SharedPreferences.class);
+    private SharedPreferences sharedPrefs;
     private Context context;
     private Weather weather;
 
